@@ -14,8 +14,9 @@ class Blocks extends Migration
     public function up()
     {
         Schema::create('blocks', function (Blueprint $table) {
-            $table->increments('s_id');
-            $table->string('email');
+            $table->increments('block_id',10);
+            $table->string('block-type',100);
+            $table->tinyInteger('status');
         });
     }
 

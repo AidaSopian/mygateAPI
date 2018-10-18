@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Permission extends Migration
+class StaffManagement extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Permission extends Migration
      */
     public function up()
     {
-        Schema::create('permission', function (Blueprint $table) {
-            $table->increments('permission_id',10);
-            $table->integer('staff_id',10);
-            $table->string('details',255);
-            $table->timestamp('created_at')->nullable();
-            $table->timestamp('updated_at')->nullable();
+        Schema::create('staff_management', function (Blueprint $table) {
+            $table->increments('staff_id',10);
+            $table->integer('society_user_id',10);
+            $table->tinyInteger('status');
         });
     }
 
