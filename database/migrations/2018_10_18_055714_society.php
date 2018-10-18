@@ -14,13 +14,14 @@ class Society extends Migration
     public function up()
     {
         Schema::create('society', function (Blueprint $table) {
-            $table->increments('s_id');
-            $table->string('ic_num');
-            $table->string('phone_num');
+            $table->increments('s_id',10);
             $table->string('name');
-            $table->string('V_type');
-            $table->increments('unit_id');
-            $table->string('plate_num');
+            $table->integer('ic_no',20);
+            $table->integer('no_phone',20);
+            $table->longText('address');
+            $table->string('plate_no',20);
+            $table->string('type_vehicles');
+            $table->tinyInteger('status');
         });
     }
 
