@@ -13,11 +13,12 @@ class Units extends Migration
      */
     public function up()
     {
-        Schema::create('units', function (Blueprint $table) {
-            $table->increments('unit_id');
-            $table->increments('user_id');
-            $table->increments('unit_no');
-            $table->string('unit_details');
+        Schema::create('unit', function (Blueprint $table) {
+            $table->increments('unit_id',10);
+            $table->integer('block_id',10);
+            $table->string('unit_no',10);
+            $table->tinyInteger('status');
+            $table->string('floor_no',10);
         });
     }
 

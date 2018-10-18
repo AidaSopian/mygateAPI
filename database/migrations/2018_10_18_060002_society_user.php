@@ -14,11 +14,11 @@ class SocietyUser extends Migration
     public function up()
     {
         Schema::create('society_user', function (Blueprint $table) {
-            $table->integer('society_user_id',10)->autoIncrement();
-            $table->integer('user_id',10)->autoIncrement();
-            $table->integer('s_id',10)->autoIncrement();
-            $table->integer('permission_id',10)->autoIncrement();
-            $table->integer('unit_id', 10)->autoIncrement();
+            $table->increment('society_user_id',10);
+            $table->integer('user_id',10);
+            $table->integer('s_id',10);
+            $table->integer('permission_id',10);
+            $table->integer('unit_id', 10);
             $table->dateTime('time_in')->nullable();
             $table->dateTime('time_out')->nullable();
             $table->tinyInteger('status');
