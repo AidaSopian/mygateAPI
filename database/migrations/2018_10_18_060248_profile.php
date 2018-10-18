@@ -14,11 +14,15 @@ class Profile extends Migration
     public function up()
     {
         Schema::create('profile', function (Blueprint $table) {
-            $table->increments('user_id');
-            $table->increments('unit_id');
-            $table->string('status');
+            $table->increments('id');
+            $table->integer('user_id', 10);
             $table->string('name');
-            $table->string('phone_number');
+            $table->integer('phone',10);
+            $table->string('address');
+            $table->string('zip');
+            $table->string('city');
+            $table->string('state');
+            $table->string('country');
         });
     }
 
