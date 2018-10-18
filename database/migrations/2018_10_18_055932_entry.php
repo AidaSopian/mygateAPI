@@ -14,8 +14,10 @@ class Entry extends Migration
     public function up()
     {
         Schema::create('entry', function (Blueprint $table) {
-            $table->increments('s_id');
-            $table->string('email');
+            $table->integer('entryPass_id',10)->autoIncrement();
+            $table->integer('society_user_id',10)->autoIncrement();
+            $table->integer('unit_id',10)->autoIncrement();
+            $table->tinyInteger('status');
         });
     }
 
