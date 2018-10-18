@@ -17,8 +17,8 @@ class Profile extends Migration
             $table->increments('id');
             $table->integer('user_id', 10);
             $table->string('name');
-            $table->integer('phone',10);
-            $table->string('address');
+            $table->integer('phone',20);
+            $table->longText('address');
             $table->string('zip');
             $table->string('city');
             $table->string('state');
