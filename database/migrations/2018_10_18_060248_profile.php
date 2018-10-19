@@ -14,11 +14,7 @@ class Profile extends Migration
     public function up()
     {
         Schema::create('profile', function (Blueprint $table) {
-<<<<<<< HEAD
-            $table->increments('id');
-=======
             $table->increments('id', 10);
->>>>>>> 4b4e848a18b332aff8fee23d2bb69e224484fb11
             $table->integer('user_id');
             $table->string('name');
             $table->integer('phone');

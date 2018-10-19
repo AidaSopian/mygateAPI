@@ -17,11 +17,7 @@ class ParkingLot extends Migration
             $table->increments('p_id',10);
             $table->integer('s_id');
             $table->integer('user_id');
-<<<<<<< HEAD
-            $table->string('unit_id');
-=======
             $table->string('unit_id',10);
->>>>>>> 4b4e848a18b332aff8fee23d2bb69e224484fb11
             $table->string('parking_slot',20);
         });
     }
