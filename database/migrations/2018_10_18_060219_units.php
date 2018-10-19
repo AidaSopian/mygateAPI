@@ -15,7 +15,7 @@ class Units extends Migration
     {
         Schema::create('unit', function (Blueprint $table) {
             $table->increments('unit_id',10);
-            $table->integer('block_id',10);
+            $table->integer('block_id');
             $table->string('unit_no',10);
             $table->tinyInteger('status');
             $table->string('floor_no',10);
