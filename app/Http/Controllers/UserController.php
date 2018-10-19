@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use Avatar;
+use Storage;
 
 class UserController extends Controller
 {
@@ -25,6 +27,10 @@ class UserController extends Controller
             'password' => bcrypt($request->password)
         ]);
         $user->save();
+
+        $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
+        Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
+
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
