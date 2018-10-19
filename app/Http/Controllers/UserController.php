@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use App\User;
 use Avatar;
 use Storage;
+use App\Notifications\SignupActivate;
 
 class UserController extends Controller
 {
@@ -24,17 +25,39 @@ class UserController extends Controller
         $user = new User([
             'username' => $request->username,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'activation_token' => str_random(60)
         ]);
         $user->save();
 
         $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
         Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
 
+        $user->notify(new SignupActivate($user));
+
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
     }
+
+    /* signup activation */
+
+        public function signupActivate($token)
+        {
+            $user = User::where('activation_token', $token)->first();
+            if (!$user) {
+                return response()->json([
+                    'message' => 'This activation token is invalid.'
+                ], 404);
+            }
+        $user->active = true;
+        $user->activation_token = '';
+        $user->save();
+        
+        $user->notify(new SignupActivate($user));
+
+        return $user;
+        }
 
     /** LOGIN USER AND CREATE TOKEN */
 
@@ -46,6 +69,9 @@ class UserController extends Controller
             'remember_me' => 'boolean'
         ]);
         $credentials = request(['email', 'password']);
+        $credentials['active'] = 1;
+        $credentials['deleted_at'] = null;
+        
         if(!Auth::attempt($credentials))
             return response()->json([
                 'message' => 'Unauthorized'

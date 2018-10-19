@@ -35,3 +35,4 @@ Route::group([
         Route::get('user', 'UserController@user');
     });
 });
+
