@@ -15,9 +15,9 @@ class Profile extends Migration
     {
         Schema::create('profile', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id', 10);
+            $table->integer('user_id');
             $table->string('name');
-            $table->integer('phone',20);
+            $table->integer('phone');
             $table->longText('address');
             $table->string('zip');
             $table->string('city');

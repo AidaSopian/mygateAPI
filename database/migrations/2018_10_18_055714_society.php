@@ -16,8 +16,8 @@ class Society extends Migration
         Schema::create('society', function (Blueprint $table) {
             $table->increments('s_id',10);
             $table->string('name');
-            $table->integer('ic_no',20);
-            $table->integer('no_phone',20);
+            $table->integer('ic_no');
+            $table->integer('no_phone');
             $table->longText('address');
             $table->string('plate_no',20);
             $table->string('type_vehicles');

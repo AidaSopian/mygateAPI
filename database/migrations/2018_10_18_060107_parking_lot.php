@@ -15,8 +15,8 @@ class ParkingLot extends Migration
     {
         Schema::create('parking_lot', function (Blueprint $table) {
             $table->increments('p_id',10);
-            $table->integer('s_id',10);
-            $table->integer('user_id',10);
+            $table->integer('s_id');
+            $table->integer('user_id');
             $table->string('unit_id',10);
             $table->string('parking_slot',20);
         });
