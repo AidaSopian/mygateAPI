@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Profile extends Migration
+class Society extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,15 @@ class Profile extends Migration
      */
     public function up()
     {
-        Schema::create('profile', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id');
+        Schema::create('society', function (Blueprint $table) {
+            $table->increments('s_id',10);
             $table->string('name');
-            $table->integer('phone');
+            $table->integer('ic_no');
+            $table->integer('no_phone');
             $table->longText('address');
-            $table->string('zip');
-            $table->string('city');
-            $table->string('state');
-            $table->string('country');
+            $table->string('plate_no',20);
+            $table->string('type_vehicles');
+            $table->tinyInteger('status');
         });
     }
 
