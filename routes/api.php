@@ -13,19 +13,32 @@ use Illuminate\Http\Request;
 |
 */
 
-    Route::group([
+Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
-    ], function () {
-    Route::post('login', 'UserController@login');
+
+
+], function () {
+    Route::post('login', 'UserController@login')->name('login');
     Route::post('signup', 'UserController@signup');
     Route::get('signup/activate/{token}', 'UserController@signupActivate');
+   
+  
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', 'UserController@logout');
+        Route::get('user', 'UserController@user');
+    });
+  });
 
     Route::group([
-     'middleware' => 'auth:api'
-    ], function() {
-     Route::get('logout', 'UserController@logout');
-     Route::get('user', 'UserController@user');
-    });
-});
+    'namespace' => 'Auth',
+    'middleware' => 'api',
+    'prefix' => 'password'
+      ], function() {
+    Route::post('create', 'PasswordResetController@create');
+    Route::get('find/{token}','PasswordResetController@find');
+    Route::post('reset','PasswordResetController@reset');
+      });
 
