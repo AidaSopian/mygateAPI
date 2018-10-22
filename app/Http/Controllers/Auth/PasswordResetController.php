@@ -10,6 +10,8 @@ use App\Notifications\PasswordResetSuccess;
 use App\User;
 use App\PasswordReset;
 
+
+
 class PasswordResetController extends Controller
 {
     /**
@@ -25,10 +27,12 @@ class PasswordResetController extends Controller
         ]);
 
         $user = User::where('email', $request->email)->first();
+
         if (!$user)
             return response()->json([
-                'message' => 'We can\'t find a user with that e-mail address.'
+                'message' => 'We cant find a user with that e-mail address.'
             ], 404);
+
         $passwordReset = PasswordReset::updateOrCreate(
             ['email' => $user->email],
             [
@@ -36,6 +40,7 @@ class PasswordResetController extends Controller
                 'token' => str_random(60)
              ]
         );
+
         if ($user && $passwordReset)
             $user->notify(
                 new PasswordResetRequest($passwordReset->token)
@@ -59,6 +64,7 @@ class PasswordResetController extends Controller
             return response()->json([
                 'message' => 'This password reset token is invalid.'
             ], 404);
+
         if (Carbon::parse($passwordReset->updated_at)->addMinutes(720)->isPast()) {
             $passwordReset->delete();
             return response()->json([
@@ -84,23 +90,31 @@ class PasswordResetController extends Controller
             'password' => 'required|string|confirmed',
             'token' => 'required|string'
         ]);
+
         $passwordReset = PasswordReset::where([
             ['token', $request->token],
             ['email', $request->email]
         ])->first();
+
         if (!$passwordReset)
             return response()->json([
                 'message' => 'This password reset token is invalid.'
             ], 404);
+
         $user = User::where('email', $passwordReset->email)->first();
+
         if (!$user)
             return response()->json([
-                'message' => 'We can\'t find a user with that e-mail address.'
+                'message' => 'We cant find a user with that e-mail address.'
             ], 404);
+
         $user->password = bcrypt($request->password);
         $user->save();
+
         $passwordReset->delete();
+
         $user->notify(new PasswordResetSuccess($passwordReset));
+        
         return response()->json($user);
     }
 }
