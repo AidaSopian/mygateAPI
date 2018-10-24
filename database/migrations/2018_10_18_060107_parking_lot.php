@@ -14,11 +14,11 @@ class ParkingLot extends Migration
     public function up()
     {
         Schema::create('parking_lot', function (Blueprint $table) {
-            $table->increments('p_id');
+            $table->increments('p_id',10);
             $table->integer('s_id');
             $table->integer('user_id');
-            $table->string('unit_id');
-            $table->string('parking_slot');
+            $table->string('unit_id',10);
+            $table->string('parking_slot',20);
         });
     }
 
