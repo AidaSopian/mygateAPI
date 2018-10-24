@@ -19,7 +19,7 @@ Route::group([
 
 
 ], function () {
-    Route::post('login', 'UserController@login')->name('login');
+    Route::post('login', 'UserController@login');
     Route::post('signup', 'UserController@signup');
     Route::get('signup/activate/{token}', 'UserController@signupActivate');
    
