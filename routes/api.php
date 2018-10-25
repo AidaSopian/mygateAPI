@@ -45,3 +45,9 @@ Route::group([
     Route::post('reset','PasswordResetController@reset');
       });
 
+    Route::get('block', 'BlocksController@index');
+    Route::post('block', 'BlocksController@create');
+    Route::put('block', 'BlocksController@create');
+    Route::delete('/block/{id}', 'BlocksController@destroy');
+
+
