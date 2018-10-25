@@ -74,9 +74,13 @@ class BlocksController extends Controller
      */
     public function destroy($id)
     {
-        $block= Blocks::find($id);
-        $block->delete();
+        $block = Blocks::findOrFail($id);
 
-        return "Data deleted";
+        $block->status = '3';
+
+        if ($block->save()){
+            return response()->json([
+                 'message' => 'Block has been deleted']);
+         }   
     }
 }
