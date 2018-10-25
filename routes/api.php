@@ -13,23 +13,25 @@ use Illuminate\Http\Request;
 |
 */
 
-    Route::group([
+Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
-    ], function () {
-    Route::post('login', 'UserController@login');
+
+
+], function () {
+    Route::post('login', 'UserController@login')->name('login');
     Route::post('signup', 'UserController@signup');
     Route::get('signup/activate/{token}', 'UserController@signupActivate');
-
-    Route::group([
-     'middleware' => 'auth:api'
-    ], function() {
-     Route::get('logout', 'UserController@logout');
-     Route::get('user', 'UserController@user');
-    });
-});
-
+   
   
+    Route::group([
+      'middleware' => 'auth:api'
+    ], function() {
+        Route::get('logout', 'UserController@logout');
+        Route::get('user', 'UserController@user');
+    });
+
+});
 
 Route::group([    
     'namespace' => 'Auth',    
@@ -43,7 +45,7 @@ Route::group([
 
 //create
 Route::post('create', 'UnitController@create');
-//edit
+//edit or update
 Route::put('create', 'UnitController@create');
 //show all
 Route::get('units', 'UnitController@index');
