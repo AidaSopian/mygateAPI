@@ -24,7 +24,7 @@ class User extends Authenticatable
     protected $primaryKey = 'user_id';
 
     protected $fillable = [
-        'username', 'email', 'password', 'avatar', 'activation_token'
+        'username', 'email', 'password', 'active', 'activation_token', 'avatar'
     ];
 
     /**
@@ -40,6 +40,6 @@ class User extends Authenticatable
     
     public function getAvatarUrlAttribute()
     {
-        return Storage::url('avatars/'.$this->id.'/'.$this->avatar);
+        return Storage::url('avatars/'.$this->user_id.'/'.$this->avatar);
     }
 }
