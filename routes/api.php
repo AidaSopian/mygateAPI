@@ -46,19 +46,19 @@ Route::post('reset','PasswordResetController@reset');
  //create new society
  Route::post('society', 'SocietyController@store');
  //update society
- Route::put('store', 'SocietyController@store');
+ Route::put('society', 'SocietyController@store');
  //delete society
  Route::put('society/{s_id}', 'SocietyController@delete');
 
 
-/** ROUTE FOR UNIT USER */
-//list unit user
-Route::get('UnitUser/{unit_user_id}', 'UnitUserController@show');
-//create new unit user
-Route::post('UnitUser', 'UnitUserController@store');
-//update unit user
-Route::put('store', 'UnitUserController@store');
-//delete unit user
-Route::delete('UnitUser/{unit_user_id}', 'UnitUserController@delete');
+//Unit_User Table
 
- 
+//show detail unit user
+Route::get ('unit_user/{unit_user_id}','Unit_userController@show');      
+//create unit user
+Route::post ('unit_user','Unit_userController@store');
+//update unit user
+Route::put ('store','Unit_userController@store');        
+//delete unit user
+Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');    
+

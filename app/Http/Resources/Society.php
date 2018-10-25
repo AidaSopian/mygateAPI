@@ -14,6 +14,7 @@ class Society extends JsonResource
      */
     public function toArray($request)
     {
+        //resource for society
        // return parent::toArray($request);
        return [
            's_id' => $this->s_id,

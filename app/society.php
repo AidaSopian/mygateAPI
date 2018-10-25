@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class society extends Model
 {
+    //model society
     public $table = "society";
     
     public $timestamps = false;

@@ -34,7 +34,7 @@ class SocietyController extends Controller
         }
     }
 
-    public function delete(Request $request,$s_id)
+    public function delete($s_id)
     {
          
          $society = Society::findOrFail($s_id);
