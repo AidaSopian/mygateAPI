@@ -33,18 +33,17 @@ Route::group([
 
 });
 
-    Route::group([
-    'namespace' => 'Auth',
-    'middleware' => 'api',
+Route::group([    
+    'namespace' => 'Auth',    
+    'middleware' => 'api',    
     'prefix' => 'password'
-    
-      ], function() {
-
+], function () {    
     Route::post('create', 'PasswordResetController@create');
-    Route::get('find/{token}','PasswordResetController@find');
-    Route::post('reset','PasswordResetController@reset');
-      });
+    Route::get('find/{token}', 'PasswordResetController@find');
+    Route::post('reset', 'PasswordResetController@reset');
+});
 
+<<<<<<< HEAD
 
       //Society Table
 
@@ -78,3 +77,15 @@ Route::group([
 
 
       
+=======
+//create
+Route::post('create', 'UnitController@create');
+//edit or update
+Route::put('create', 'UnitController@create');
+//show all
+Route::get('units', 'UnitController@index');
+//show by id
+Route::get('units/{id}', 'UnitController@show');
+//delete
+Route::put('delete/{id}','UnitController@destroy');
+>>>>>>> b95c157d66ade59054ac70b9981f6cbaea144b11
