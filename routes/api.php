@@ -49,6 +49,41 @@ Route::group([
     Route::delete('/block/{id}', 'BlocksController@destroy');
 
 
+<<<<<<< HEAD
+
+      //Society Table
+
+      //show detail society
+      Route::get ('society/{s_id}','SocietyController@show');
+      
+      //create society
+      Route::post ('society','SocietyController@store');
+
+      //update society
+      Route::put ('store','SocietyController@store');  
+      
+
+      //delete society
+      Route::delete ('society/{s_id}','SocietyController@delete');
+
+
+      //Unit_User Table
+
+      //show detail unit user
+      Route::get ('unit_user/{unit_user_id}','Unit_userController@show');
+      
+      //create unit user
+      Route::post ('unit_user','Unit_userController@store');
+
+      //update unit user
+      Route::put ('store','Unit_userController@store');  
+      
+      //delete unit user
+      Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');
+
+
+      
+=======
 //create
 Route::post('create', 'UnitController@create');
 //edit or update
@@ -59,3 +94,4 @@ Route::get('units', 'UnitController@index');
 Route::get('units/{id}', 'UnitController@show');
 //delete
 Route::put('delete/{id}','UnitController@destroy');
+>>>>>>> b95c157d66ade59054ac70b9981f6cbaea144b11
