@@ -29,3 +29,25 @@ use Illuminate\Http\Request;
     });
 });
 
+  
+
+Route::group([    
+    'namespace' => 'Auth',    
+    'middleware' => 'api',    
+    'prefix' => 'password'
+], function () {    
+    Route::post('create', 'PasswordResetController@create');
+    Route::get('find/{token}', 'PasswordResetController@find');
+    Route::post('reset', 'PasswordResetController@reset');
+});
+
+//create
+Route::post('create', 'UnitController@create');
+//edit
+Route::put('create', 'UnitController@create');
+//show all
+Route::get('units', 'UnitController@index');
+//show by id
+Route::get('units/{id}', 'UnitController@show');
+//delete
+Route::put('delete/{id}','UnitController@destroy');
