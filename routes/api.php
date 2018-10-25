@@ -43,13 +43,16 @@ Route::group([
     Route::post('reset', 'PasswordResetController@reset');
 });
 //route for blocks
+    //show
     Route::get('block', 'BlocksController@index');
+    //create
     Route::post('block', 'BlocksController@create');
+    //update
     Route::put('block', 'BlocksController@create');
-    Route::delete('/block/{id}', 'BlocksController@destroy');
+    //delete
+    Route::put('/block/{id}', 'BlocksController@destroy');
 
 
-<<<<<<< HEAD
 
       //Society Table
 
@@ -83,7 +86,6 @@ Route::group([
 
 
       
-=======
 //create
 Route::post('create', 'UnitController@create');
 //edit or update
@@ -94,4 +96,3 @@ Route::get('units', 'UnitController@index');
 Route::get('units/{id}', 'UnitController@show');
 //delete
 Route::put('delete/{id}','UnitController@destroy');
->>>>>>> b95c157d66ade59054ac70b9981f6cbaea144b11
