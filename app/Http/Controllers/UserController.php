@@ -36,6 +36,8 @@ class UserController extends Controller
         $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
         Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
 
+        $user->notify(new SignupActivate($user));
+
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
@@ -52,10 +54,8 @@ class UserController extends Controller
         ]);
 
         $credentials = request(['email', 'password']);
-        //to validate account is active
         $credentials['active'] = 1;
         $credentials['deleted_at'] = null;
-        //end dkt sini
         
         if(!Auth::attempt($credentials))
             return response()->json([
@@ -97,7 +97,7 @@ class UserController extends Controller
     }
 
     // confirm account (to activate user)
-    public function signupActivate($token)
+     public function signupActivate($token)
     {
         $user = User::where('activation_token', $token)->first();
         
