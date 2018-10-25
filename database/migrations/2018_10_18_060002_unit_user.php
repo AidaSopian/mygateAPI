@@ -13,8 +13,8 @@ class SocietyUser extends Migration
      */
     public function up()
     {
-        Schema::create('society_user', function (Blueprint $table) {
-            $table->increments('society_user_id',10);
+        Schema::create('unit_user', function (Blueprint $table) {
+            $table->increments('unit_user_id',10);
             $table->integer('user_id');
             $table->integer('s_id');
             $table->integer('permission_id');
