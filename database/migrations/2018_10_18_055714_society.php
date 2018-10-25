@@ -20,7 +20,7 @@ class Society extends Migration
             $table->integer('no_phone');
             $table->longText('address');
             $table->string('plate_no',20);
-            $table->string('type_vehicles',255);
+            $table->string('type_vehicles');
             $table->tinyInteger('status');
         });
     }

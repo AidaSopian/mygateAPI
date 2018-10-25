@@ -81,14 +81,14 @@ class UserController extends Controller
 
     /** LOGOUT USER & REVOKE TOKEN */
 
-    public function logout (Request $request)
+    public function logout(Request $request)
     {
         $request->user()->token()->revoke();
         return response()->json([
             'message' => 'Successfully logged out'
         ]);
     }
-
+    
     /**GET AUTHENTICATED USER */
 
     public function user(Request $request)
