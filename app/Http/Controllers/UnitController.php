@@ -7,7 +7,11 @@ use App\Http\Controllers\Controller;
 use App\Unit;
 use App\Http\Resources\Unit as UnitResource;
 use Session;
+<<<<<<< HEAD
 //use DB;
+=======
+use Illuminate\Support\Facades\DB;
+>>>>>>> 9715cc5886ce0c995e4f1001efb7f08ac4f38002
 
 class UnitController extends Controller
 {
@@ -54,6 +58,7 @@ class UnitController extends Controller
      */
     public function show()
     {
+<<<<<<< HEAD
         /*return DB::table('units')
         ->join('blocks','units.block_id','=','blocks.block_id')
         ->get();*/
@@ -61,7 +66,36 @@ class UnitController extends Controller
         $units = Unit::findOrFail($id);
         return new UnitResource($units);
         
+=======
+
+        //show unit and blocks table 
+        return DB::table('units')
+        ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
+        ->get();
+
+        //when data is deleted, this will show up 
+        $unit = Unit::findOrFail($id);
+
+        if ($unit->status == 3){
+           return response()->json([
+                'message' => 'Unit has been deleted']);
+        }
+        else{
+            return new UnitResource($unit);
+        }  
+
+
+
+>>>>>>> 9715cc5886ce0c995e4f1001efb7f08ac4f38002
     }
+    
+    //join table units and blocks 
+   // public function join()
+   //{
+    //    return DB::table('units')
+   //    ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
+   //    ->get();
+   // }
 
     /**
      * Remove the specified resource from storage.
