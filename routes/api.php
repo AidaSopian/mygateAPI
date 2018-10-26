@@ -59,11 +59,13 @@ Route::post('reset','PasswordResetController@reset');
       Route::post ('society','SocietyController@store');
 
       //update society
-      Route::put ('store','SocietyController@store');  
+      Route::put ('society','SocietyController@store');  
       
-
       //delete society
-      Route::delete ('society/{s_id}','SocietyController@delete');
+      Route::put ('society/{s_id}','SocietyController@delete');
+
+      //search
+        Route::post('search', 'SocietyController@getSearchResults'); //search route
 
 
 
@@ -89,5 +91,7 @@ Route::get('units', 'UnitController@index');
 Route::get('units/{id}', 'UnitController@show');
 //delete
 Route::put('delete/{id}','UnitController@destroy');
-//search
-Route::post('search', 'SocietyController@getSearchResults'); //search route
+
+
+Route::get ('unit', 'testController@test_query');
+
