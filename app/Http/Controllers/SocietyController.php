@@ -6,7 +6,9 @@ use App\Society;
 use App\Http\Resources\Society as SocietyResources;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Session;
+use App\Drivers;
+use Response;
+use DB;
 
 class SocietyController extends Controller
 {
@@ -40,13 +42,29 @@ class SocietyController extends Controller
     //delete
     public function delete(Request $request, $s_id)
     {
-        $society = Society::findOrFail($s_id);
+        $society = Society::findOrFail($society);
 
-        $society->delete;
-            session::flash('message');
-            return new SocietyResources($society);
+        $society->status ='3';
+
+        if($society->save())
+        {
+            return response()->json([
+                'message'=>'Society has been deleted'
+            ]);
+        }
         
     }
 
-    
+        
+    public function getSearchResults(Request $request) {
+
+        $data = $request->get('name');
+        $drivers = DB::table('society')->where('name', 'like', "%{$data}%")
+                        ->get();
+        
+        return Response::json([
+            $drivers
+]);
+    }
+
 }
