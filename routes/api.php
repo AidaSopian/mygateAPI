@@ -17,7 +17,7 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
 ], function () {
-    Route::post('login', 'UserController@login')->name('login');
+    Route::post('login', 'UserController@login');
     Route::post('signup', 'UserController@signup');
     Route::get('signup/activate/{token}', 'UserController@signupActivate');   
   
@@ -39,6 +39,15 @@ Route::get('find/{token}','PasswordResetController@find');
 Route::post('reset','PasswordResetController@reset');
 });
 
+//route for blocks table - yana
+//show
+Route::get('block', 'BlocksController@index');
+//create
+Route::post('block', 'BlocksController@create');
+//update
+Route::put('block', 'BlocksController@create');
+//delete
+Route::put('/block/{id}', 'BlocksController@destroy');
 
 //Society Table - kinah
  //list society
@@ -49,7 +58,6 @@ Route::post('reset','PasswordResetController@reset');
  Route::put('society', 'SocietyController@store');
  //delete society
  Route::put('society/{s_id}', 'SocietyController@delete');
-
 
 //Unit_User Table - khalilah
 //show detail unit user
@@ -72,3 +80,4 @@ Route::get('units', 'UnitController@index');
 Route::get('units/{id}', 'UnitController@show');
 //Delete unit
 Route::put('delete/{id}', 'UnitController@destroy');
+
