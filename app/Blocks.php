@@ -10,7 +10,7 @@ class Blocks extends Model
     protected $primaryKey= 'block_id';
 
     protected $fillable= [
-        'block_id','block_type', 'status'
+        'block_type', 'status'
     ];
 
     public $timestamps= false;

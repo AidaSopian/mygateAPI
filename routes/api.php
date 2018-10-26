@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+ //test controller
+ Route::get('/', 'TestController@test_query');
 
 Route::group([
     'middleware' => 'api',
