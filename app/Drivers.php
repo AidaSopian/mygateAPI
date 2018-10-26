@@ -9,7 +9,7 @@ class Drivers extends Model
 {
    use SoftDeletes;
 
-  
+  //
    protected $table = 'society';
    protected $fillable = [
                            'name',

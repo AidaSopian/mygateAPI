@@ -16,34 +16,41 @@ use Illuminate\Http\Request;
 Route::group([
     'middleware' => 'api',
     'prefix' => 'auth'
-
-
 ], function () {
-    Route::post('login', 'UserController@login')->name('login');
+    Route::post('login', 'UserController@login');
     Route::post('signup', 'UserController@signup');
-    Route::get('signup/activate/{token}', 'UserController@signupActivate');
-   
+    Route::get('signup/activate/{token}', 'UserController@signupActivate');   
   
-    Route::group([
+Route::group([
       'middleware' => 'auth:api'
     ], function() {
         Route::get('logout', 'UserController@logout');
         Route::get('user', 'UserController@user');
     });
-
 });
 
-Route::group([    
-    'namespace' => 'Auth',    
-    'middleware' => 'api',    
-    'prefix' => 'password'
-], function () {    
-    Route::post('create', 'PasswordResetController@create');
-    Route::get('find/{token}', 'PasswordResetController@find');
-    Route::post('reset', 'PasswordResetController@reset');
+Route::group([
+    'namespace' => 'Auth',
+    'middleware' => 'api',
+    'prefix' => 'password'    
+      ], function() {
+Route::post('create', 'PasswordResetController@create');
+Route::get('find/{token}','PasswordResetController@find');
+Route::post('reset','PasswordResetController@reset');
 });
+//route for blocks
+    //show
+    Route::get('block', 'BlocksController@index');
+    //create
+    Route::post('block', 'BlocksController@create');
+    //update
+    Route::put('block', 'BlocksController@create');
+    //delete
+    Route::put('/block/{id}', 'BlocksController@destroy');
 
- //Society Table
+
+
+      //Society Table
 
       //show detail society
       Route::get ('society/{s_id}','SocietyController@show');
@@ -58,6 +65,20 @@ Route::group([
       //delete society
       Route::delete ('society/{s_id}','SocietyController@delete');
 
+
+
+//Unit_User Table
+
+//show detail unit user
+Route::get ('unit_user/{unit_user_id}','Unit_userController@show');      
+//create unit user
+Route::post ('unit_user','Unit_userController@store');
+//update unit user
+Route::put ('store','Unit_userController@store');        
+//delete unit user
+Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');    
+
+      
 //create
 Route::post('create', 'UnitController@create');
 //edit or update
@@ -70,4 +91,3 @@ Route::get('units/{id}', 'UnitController@show');
 Route::put('delete/{id}','UnitController@destroy');
 //search
 Route::post('search', 'SocietyController@getSearchResults'); //search route
-
