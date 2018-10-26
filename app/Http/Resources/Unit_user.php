@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class Society extends JsonResource
+class Unit_user extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,16 +15,14 @@ class Society extends JsonResource
     public function toArray($request)
     {
         return [
+            'unit_user_id'=> $this->unit_user_id,
+            'user_id'=> $this->user_id,
             's_id'=> $this->s_id,
-            'name'=> $this->name,
-            'ic_no'=>$this->ic_no,
-            'no_phone'=> $this->no_phone,
-            'address'=> $this->address,
-            'plate_no'=>$this->plate_no,
-            'type_vehicles'=> $this->type_vehicles,
+            'permission_id'=> $this->permission_id,
+            'unit_id'=> $this->unit_id,
+            'time_in'=> $this->time_in,
+            'time_out'=> $this->time_out,
             'status'=> $this->status,
-          
-
         ];
     }
 }

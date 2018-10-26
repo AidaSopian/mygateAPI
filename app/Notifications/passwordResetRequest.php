@@ -7,12 +7,11 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class PasswordResetRequest extends Notification implements ShouldQueue
+class passwordResetRequest extends Notification
 {
     use Queueable;
 
     protected $token;
-
     /**
      * Create a new notification instance.
      *
@@ -42,14 +41,12 @@ class PasswordResetRequest extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        $url = url('/api/password/find/' .$this->token);
-
+        $url = url('/api/password/find/'.$this->token);
         return (new MailMessage)
-                    ->line('You are receiving this email because we received a password reser request for your account.')
-                    ->action('Reset Password', url($url))
-                    ->line('If you did not request a password reset, no further action is required.');
+            ->line('You are receiving this email because we        received a password reset request for your account.')
+            ->action('Reset Password', url($url))
+            ->line('If you did not request a password reset, no further action is required.');
     }
-
 
     /**
      * Get the array representation of the notification.
@@ -57,7 +54,6 @@ class PasswordResetRequest extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return array
      */
-    
     public function toArray($notifiable)
     {
         return [

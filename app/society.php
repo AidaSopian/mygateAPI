@@ -3,15 +3,21 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class society extends Model
 {
-    //model society
-    public $table = "society";
     
-    public $timestamps = false;
-    
-    public $primaryKey = "s_id";
+    use scopeSearch;
+    use SoftDeletes;
 
-    protected $fillable = ['s_id','name', 'ic_no', 'no_phone', 'address', 'plate_no', 'type_vehicles', 'status'];
+    public $table= "society";
+
+    public $timestamps = false;
+
+   public $primaryKey = "s_id";
+
+    protected $fillable = ['s_id','name','ic_no', 'no_phone', 'address', 'plate_no', 'type_vehicles','status'];
+
 }
+

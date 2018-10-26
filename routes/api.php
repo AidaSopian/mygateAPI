@@ -78,10 +78,10 @@ Route::post('unit','UnitController@store');
 Route::put('store','UnitController@store');
 
 // Delete unit
-Route::delete('unit/{id}','UnitController@destroy');
+Route::put('unit/{id}','UnitController@destroy');
 
 // Search
-Route::post('search','UnitController@result');
+//Route::post('search','UnitController@result');
     
 //show detail unit user
 Route::get ('unit_user/{unit_user_id}','Unit_userController@show');      
@@ -92,10 +92,9 @@ Route::put ('store','Unit_userController@store');
 //delete unit user
 Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');
 
+//search bar
+Route::post('search','SocietyController@Search');
 
-Route::get('search','SocietyController@Search');
-Route::get('/','SocietyController@index');
 
 
       
-

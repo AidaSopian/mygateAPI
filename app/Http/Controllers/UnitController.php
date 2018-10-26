@@ -65,11 +65,16 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $units = Unit::findOrFail($id);
+        $units = Society::findOrFail($units);
 
-        $units->delete;
-        Session::flash('message');
-        return new UnitResource($units);
+        $units->status ='3';
+
+        if($units->save())
+        {
+            return response()->json([
+                'message'=>'Unit has been deleted'
+            ]);
+        }
         
     }
 

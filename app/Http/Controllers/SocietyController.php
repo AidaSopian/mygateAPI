@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
 use Illuminate\Support\Facades\DB;
-//use App\Profile;
 use Auth;
 
 class SocietyController extends Controller
@@ -39,39 +38,39 @@ class SocietyController extends Controller
 
     public function delete($s_id)
     {
-         
-         $society = Society::findOrFail($s_id);
+        $society = Society::findOrFail($society);
 
-         $society->status = "3";
+        $society->status ='3';
 
-         if($society->save()){
-             return response()->json([
-                 'message' => "Society has been deleted"
-             ]);
-         }        
+        if($society->save())
+        {
+            return response()->json([
+                'message'=>'Society has been deleted'
+            ]);
+        }
+        
     }
 
-    /*public function search(Request $request)
-    {
-        $name=Auth::user()->$name;
-        //$profile=Profile::find($name);
-        $keyword=$request->input('search');
-        $posts=Post::where('Society','LIKE','%'.$keyword.'%')->get();
-        return view('posts.societycontroller',['posts'=>$post]);
-        //exit();
-    }*/
+        
+    public function getSearchResults(Request $request) {
+
+        $data = $request->get('name');
+        $drivers = DB::table('society')->where('name', 'like', "%{$data}%")
+                        ->get();
+        
+        return Response::json([
+            $drivers
+  ]);
+       }
+
 
     public function Search(Request $request){
-        $name=$request->get('name');
-        //return $query->where('society','LIKE','%' .$name. '%');
-        $posts=DB::table('posts')->where('society','LIKE','%' .$name. '%');
-        return view('index',['posts'=>$posts]);
-    }
+        $keywords=$request->get('name');
+        $society=DB::table('society')->where('name','LIKE','%' .$keywords. '%')
+                                 -> get();
+       return Response::json([
+           $society  ]);
 
-    public function index()
-    {
-        $posts=DB::table('posts')->paginate(15);
-        return view('index',['posts'=>$posts]);
-    }
+        }
 
 }
