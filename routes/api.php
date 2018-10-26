@@ -89,3 +89,5 @@ Route::get('units', 'UnitController@index');
 Route::get('units/{id}', 'UnitController@show');
 //delete
 Route::put('delete/{id}','UnitController@destroy');
+//search
+Route::post('search', 'SocietyController@getSearchResults'); //search route
