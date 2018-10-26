@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class SocietyUser extends Migration
+class UnitUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class SocietyUser extends Migration
      */
     public function up()
     {
-        Schema::create('society_user', function (Blueprint $table) {
-            $table->increments('society_user_id',10);
+        Schema::create('unit_user', function (Blueprint $table) {
+            $table->increments('unit_user_id',10);
             $table->integer('user_id');
             $table->integer('s_id');
             $table->integer('permission_id');
             $table->integer('unit_id');
+            $table->date('date');
             $table->dateTime('time_in')->nullable();
             $table->dateTime('time_out')->nullable();
             $table->tinyInteger('status');

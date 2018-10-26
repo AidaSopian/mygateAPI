@@ -73,12 +73,6 @@ class UnitController extends Controller
         
     }
 
-    public function result(Request  $request)
-    {
-        $query = $request->result;
-        $units = DB::table('units')->where('unit_id', 'LIKE', '%' . $block_id . '%')->paginate(10);
-        return view('result', compact('units', 'block_id'));
-    }
 
 }
 

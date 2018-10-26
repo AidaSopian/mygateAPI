@@ -28,7 +28,10 @@ class UserController extends Controller
             'password' => bcrypt($request->password),
             'activation_token' => str_random(60)
         ]);
+
         $user->save();
+
+        $user->notify(new SignupActivate($user));
 
         $avatar = Avatar::create($user->name)->getImageObject()->encode('png');
         Storage::put('avatars/'.$user->id.'/avatar.png', (string) $avatar);
@@ -40,25 +43,6 @@ class UserController extends Controller
         ], 201);
     }
 
-    /* signup activation */
-
-        public function signupActivate($token)
-        {
-            $user = User::where('activation_token', $token)->first();
-            if (!$user) {
-                return response()->json([
-                    'message' => 'This activation token is invalid.'
-                ], 404);
-            }
-        $user->active = true;
-        $user->activation_token = '';
-        $user->save();
-        
-        $user->notify(new SignupActivate($user));
-
-        return $user;
-        }
-
     /** LOGIN USER AND CREATE TOKEN */
 
     public function login (Request $request)
@@ -68,6 +52,7 @@ class UserController extends Controller
             'password' => 'required|string',
             'remember_me' => 'boolean'
         ]);
+
         $credentials = request(['email', 'password']);
         $credentials['active'] = 1;
         $credentials['deleted_at'] = null;
@@ -76,13 +61,16 @@ class UserController extends Controller
             return response()->json([
                 'message' => 'Unauthorized'
             ], 401);
+
         $user = $request->user();
 
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->token;
         if ($request->remember_me)
             $token->expires_at = Carbon::now()->addWeeks(1);
+
         $token->save();
+        
         return response()->json([
             'access_token' => $tokenResult->accessToken,
             'token_type' => 'Bearer',
@@ -106,5 +94,22 @@ class UserController extends Controller
     public function user(Request $request)
     {
         return response()->json($request->user());
+    }
+
+    // confirm account (to activate user)
+     public function signupActivate($token)
+    {
+        $user = User::where('activation_token', $token)->first();
+        
+        if (!$user) {
+            return response()->json([
+                'message' => 'This activation token is invalid.'
+            ], 404);
+        }
+
+            $user->active = true;
+            $user->activation_token = '';
+            $user->save();
+            return $user;
     }
 }

@@ -23,6 +23,7 @@ class Society extends Migration
             $table->string('type_vehicles',255);
             $table->tinyInteger('status');
         });
+        
     }
 
     /**

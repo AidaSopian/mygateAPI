@@ -57,6 +57,7 @@ class PasswordResetRequest extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return array
      */
+    
     public function toArray($notifiable)
     {
         return [
