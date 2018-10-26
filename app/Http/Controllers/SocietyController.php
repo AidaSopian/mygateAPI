@@ -53,13 +53,24 @@ class SocietyController extends Controller
     }
 
         
-    /*public function getSearchResults(Request $request) {
+    public function getSearchResults(Request $request) {
 
         $data = $request->get('name');
-        $drivers = DB::table('society')->where('name', 'like', "%{$data}%")
+        //$drivers = DB::table('society')->where('name', 'like', "%{$data}%")
+                        //->get();
+
+         if($drivers != "")
+           {
+                  $drivers = DB::table('society')->where('name', 'like', "%{$data}%")
                         ->get();
+
+           } else 
+
+                return "No Data Found";
+
+           }
         
-        if($drivers->save())
+        /*if($drivers->save())
            {
                  return Response::json([
                 'message'=>'No Data Found' ]);
@@ -70,7 +81,5 @@ class SocietyController extends Controller
                     $drivers  ]);
 
            }*/
-
-
 
 }

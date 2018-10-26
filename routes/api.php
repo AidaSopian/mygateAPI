@@ -40,18 +40,18 @@ Route::post('reset','PasswordResetController@reset');
 });
 
 //route for blocks
-    //show
-    Route::get('block', 'BlocksController@index');
-    //create
-    Route::post('block', 'BlocksController@create');
-    //update
-    Route::put('block', 'BlocksController@create');
-    //delete
-    Route::put('/block/{id}', 'BlocksController@destroy');
+        //show
+        Route::get('block', 'BlocksController@index');
+        //create
+        Route::post('block', 'BlocksController@create');
+        //update
+        Route::put('block', 'BlocksController@create');
+        //delete
+        Route::put('/block/{id}', 'BlocksController@destroy');
 
 
 
-      //Society Table
+//Society Table
 
       //show detail society
       Route::get ('society/{s_id}','SocietyController@show');
@@ -60,42 +60,45 @@ Route::post('reset','PasswordResetController@reset');
       Route::post ('society','SocietyController@store');
 
       //update society
-      Route::put ('society','SocietyController@store');  
+      Route::put ('store','SocietyController@store');  
       
 
       //delete society
-      Route::put ('society/{s_id}','SocietyController@destroy');
+      Route::delete ('society/{s_id}','SocietyController@delete');
 
 
-// List units
-Route::get('units','UnitController@index');
+// Unit Table 
 
-// List single unit
-Route::get('unit/{id}','UnitController@show');
+        // List units
+        Route::get('units','UnitController@index');
 
-// Create new unit
-Route::post('unit','UnitController@store');
+        // List single unit
+        Route::get('unit/{id}','UnitController@show');
 
-// Update unit
-Route::put('store','UnitController@store');
+        // Create new unit
+        Route::post('unit','UnitController@store');
 
-// Delete unit
-Route::put('unit/{id}','UnitController@destroy');
+        // Update unit
+        Route::put('store','UnitController@store');
+
+        // Delete unit
+        Route::put('unit/{id}','UnitController@destroy');
+
+// Unit User Table
+    
+        //show detail unit user
+        Route::get ('unit_user/{unit_user_id}','Unit_userController@show');      
+        //create unit user
+        Route::post ('unit_user','Unit_userController@store');
+        //update unit user
+        Route::put ('store','Unit_userController@store');        
+        //delete unit user
+        Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');
+
 
 // Search
-//Route::post('search','SocietyController@getSearchResults');
 
-    
-//show detail unit user
-Route::get ('unit_user/{unit_user_id}','Unit_userController@show');      
-//create unit user
-Route::post ('unit_user','Unit_userController@store');
-//update unit user
-Route::put ('store','Unit_userController@store');        
-//delete unit user
-Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');
+       //Route::post('search','SocietyController@getSearchResults');
 
-
-
-
-      
+      Route::get('join','TestController@test_query');
+      //Route::get('show','UnitController@show');

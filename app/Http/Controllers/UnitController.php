@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Unit;
 use App\Http\Resources\Unit as UnitResource;
 use Session;
+//use DB;
 
 class UnitController extends Controller
 {
@@ -51,10 +52,15 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
+        /*return DB::table('units')
+        ->join('blocks','units.block_id','=','blocks.block_id')
+        ->get();*/
+
         $units = Unit::findOrFail($id);
         return new UnitResource($units);
+        
     }
 
     /**
@@ -65,7 +71,7 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $units = Society::findOrFail($id);
+        $units = Unit::findOrFail($id);
 
         $units->status ='3';
 
@@ -77,7 +83,6 @@ class UnitController extends Controller
         }
         
     }
-
 
 }
 
