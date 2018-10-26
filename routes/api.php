@@ -92,4 +92,6 @@ Route::put('delete/{id}','UnitController@destroy');
 //search
 Route::post('search', 'SocietyController@getSearchResults'); //search route
 //join table
-Route::get('join', 'UnitController@join');
+//Route::get('join', 'UnitController@join');
+//show join table
+Route::get('show','UnitController@show');

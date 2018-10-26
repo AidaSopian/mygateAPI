@@ -58,8 +58,15 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
+
+        //show unit and blocks table 
+        return DB::table('units')
+        ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
+        ->get();
+
+        //when data is deleted, this will show up 
         $unit = Unit::findOrFail($id);
 
         if ($unit->status == 3){
@@ -70,15 +77,17 @@ class UnitController extends Controller
             return new UnitResource($unit);
         }  
 
+
+
     }
     
     //join table units and blocks 
-    public function join()
-    {
-        return DB::table('units')
-        ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
-        ->get();
-    }
+   // public function join()
+   //{
+    //    return DB::table('units')
+   //    ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
+   //    ->get();
+   // }
 
    
 
