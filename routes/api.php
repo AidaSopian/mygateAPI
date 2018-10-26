@@ -38,6 +38,7 @@ Route::post('create', 'PasswordResetController@create');
 Route::get('find/{token}','PasswordResetController@find');
 Route::post('reset','PasswordResetController@reset');
 });
+
 //route for blocks
     //show
     Route::get('block', 'BlocksController@index');
@@ -65,6 +66,7 @@ Route::post('reset','PasswordResetController@reset');
       //delete society
       Route::delete ('society/{s_id}','SocietyController@delete');
 
+
 // List units
 Route::get('units','UnitController@index');
 
@@ -81,7 +83,8 @@ Route::put('store','UnitController@store');
 Route::put('unit/{id}','UnitController@destroy');
 
 // Search
-//Route::post('search','UnitController@result');
+//Route::post('search','SocietyController@getSearchResults');
+
     
 //show detail unit user
 Route::get ('unit_user/{unit_user_id}','Unit_userController@show');      
@@ -92,8 +95,6 @@ Route::put ('store','Unit_userController@store');
 //delete unit user
 Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');
 
-//search bar
-Route::post('search','SocietyController@Search');
 
 
 

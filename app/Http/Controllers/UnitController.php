@@ -65,7 +65,7 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $units = Society::findOrFail($units);
+        $units = Society::findOrFail($id);
 
         $units->status ='3';
 

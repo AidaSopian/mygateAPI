@@ -10,6 +10,7 @@ use App\Http\Requests;
 use Session;
 use Illuminate\Support\Facades\DB;
 use Auth;
+use Response;
 
 class SocietyController extends Controller
 {
@@ -52,25 +53,24 @@ class SocietyController extends Controller
     }
 
         
-    public function getSearchResults(Request $request) {
+    /*public function getSearchResults(Request $request) {
 
         $data = $request->get('name');
         $drivers = DB::table('society')->where('name', 'like', "%{$data}%")
                         ->get();
         
-        return Response::json([
-            $drivers
-  ]);
-       }
+        if($drivers->save())
+           {
+                 return Response::json([
+                'message'=>'No Data Found' ]);
+
+           } else 
+
+                return Response::json([
+                    $drivers  ]);
+
+           }*/
 
 
-    public function Search(Request $request){
-        $keywords=$request->get('name');
-        $society=DB::table('society')->where('name','LIKE','%' .$keywords. '%')
-                                 -> get();
-       return Response::json([
-           $society  ]);
-
-        }
 
 }
