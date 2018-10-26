@@ -15,7 +15,7 @@ class StaffManagement extends Migration
     {
         Schema::create('staff_management', function (Blueprint $table) {
             $table->increments('staff_id',10);
-            $table->integer('unit_user_id');
+            $table->integer('society_user_id');
             $table->tinyInteger('status');
         });
     }

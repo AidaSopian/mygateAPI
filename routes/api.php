@@ -55,9 +55,11 @@ Route::put('/block/{id}', 'BlocksController@destroy');
  //create new society
  Route::post('society', 'SocietyController@store');
  //update society
- Route::put('society', 'SocietyController@store');
+ Route::put('update', 'SocietyController@store');
  //delete society
  Route::put('society/{s_id}', 'SocietyController@delete');
+ //search society
+Route::post('search', 'SocietyController@getSearchResults'); 
 
 //Unit_User Table - khalilah
 //show detail unit user
@@ -80,4 +82,3 @@ Route::get('units', 'UnitController@index');
 Route::get('units/{id}', 'UnitController@show');
 //Delete unit
 Route::put('delete/{id}', 'UnitController@destroy');
-

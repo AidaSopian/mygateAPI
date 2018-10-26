@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UnitUser extends Migration
+class SocietyUser extends Migration
 {
     /**
      * Run the migrations.
@@ -19,7 +19,6 @@ class UnitUser extends Migration
             $table->integer('s_id');
             $table->integer('permission_id');
             $table->integer('unit_id');
-            $table->date('date');
             $table->dateTime('time_in')->nullable();
             $table->dateTime('time_out')->nullable();
             $table->tinyInteger('status');

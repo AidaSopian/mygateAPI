@@ -54,7 +54,6 @@ class passwordResetRequest extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
-    
     public function toArray($notifiable)
     {
         return [
