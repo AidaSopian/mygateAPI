@@ -38,7 +38,7 @@ class SocietyController extends Controller
 
     public function delete($s_id)
     {
-        $society = Society::findOrFail($society);
+        $society = Society::findOrFail($s_id);
 
         $society->status ='3';
 

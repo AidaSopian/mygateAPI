@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use scopeSearch;
 
 class society extends Model
 {
     
-    use scopeSearch;
+    
 
     public $table= "society";
 
