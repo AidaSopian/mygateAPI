@@ -13,7 +13,7 @@ class Unit_userController extends Controller
     //show
     public function show ($unit_user_id)
     {
-        return UnitUser::find ($unit_user_id);
+        return Unit_user::find ($unit_user_id);
     }
 
     //create and update
