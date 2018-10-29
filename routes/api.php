@@ -75,7 +75,6 @@ Route::post('reset','PasswordResetController@reset');
         // List single unit
         Route::get('unit/{id}','UnitController@show');
 
-<<<<<<< HEAD
         // Create new unit
         Route::post('unit','UnitController@store');
 
@@ -103,7 +102,6 @@ Route::post('reset','PasswordResetController@reset');
 
       Route::get('join','TestController@test_query');
       //Route::get('show','UnitController@show');
-=======
       
 //create
 Route::post('create', 'UnitController@create');
@@ -121,4 +119,3 @@ Route::post('search', 'SocietyController@getSearchResults'); //search route
 //Route::get('join', 'UnitController@join');
 //show join table
 Route::get('show','UnitController@show');
->>>>>>> 9715cc5886ce0c995e4f1001efb7f08ac4f38002
