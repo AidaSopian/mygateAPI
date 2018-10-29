@@ -89,7 +89,12 @@ Route::put('create', 'UnitController@create');
 //show all
 Route::get('units', 'UnitController@index');
 //show by id
-Route::get('units/{id}', 'UnitController@show');
+//Route::get('units/{id}', 'UnitController@show');
 //delete
 Route::put('delete/{id}','UnitController@destroy');
-
+//search
+//Route::post('search', 'SocietyController@getSearchResults'); //search route
+//join table
+//Route::get('join', 'UnitController@join');
+//show join table
+Route::post('done','UnitController@show');

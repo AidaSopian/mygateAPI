@@ -52,37 +52,41 @@ class UnitUserController extends Controller
     }
 
     public function getSearchResults(Request $request) {
-
         
-
         if($data = $request->get('s_id')){
-        $drivers = DB::table('unit_user')
+        return DB::table('unit_user')
         ->join(
             'society',
             'society.s_id', '=', 'unit_user.s_id'
         )
+        ->where('unit_user.s_id', $data)
                         ->get();
         }
         elseif($data = $request->get('user_id')){
-            $drivers = DB::table('unit_user')
+            return DB::table('unit_user')
             ->join(
                 'users',
                 'users.user_id','=','unit_user.user_id'
             )
+            ->where('unit_user.user_id', $data)
                             ->get();
             }
             elseif($data = $request->get('unit_id')){
-                $drivers = DB::table('unit_user')
+                return DB::table('units')
                 ->join(
-                    'units',
+                    'unit_user',
                     'units.unit_id', '=', 'unit_user.unit_id'
                 )
-                                ->get();
+                ->join(
+                    'blocks',
+                    'blocks.block_id', '=', 'units.block_id'
+                )
+                ->where('units.unit_id', $data)
+                ->select('unit_user.*', 'units.*','blocks.*')
+                ->get();
+                
                 }
 
-        return Response::json([
-            $drivers
-    ]);
     }
 
     public function query()
@@ -101,6 +105,7 @@ class UnitUserController extends Controller
                 'units.unit_id', '=', 'unit_user.unit_id'
             )
             ->get();
+            
             print_r($unit_user);
    
     }
