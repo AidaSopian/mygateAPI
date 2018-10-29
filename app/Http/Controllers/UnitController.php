@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Unit;
 use App\Http\Resources\Unit as UnitResource;
 use Session;
+use Illuminate\Support\Facades\DB;
 
 class UnitController extends Controller
 {
@@ -57,8 +58,15 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
+
+        //show unit and blocks table 
+        return DB::table('units')
+        ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
+        ->get();
+
+        //when data is deleted, this will show up 
         $unit = Unit::findOrFail($id);
 
         if ($unit->status == 3){
@@ -67,11 +75,16 @@ class UnitController extends Controller
         }
         else{
             return new UnitResource($unit);
-        }
-        
-        
-
+        }  
     }
+    
+    //join table units and blocks 
+   // public function join()
+   //{
+    //    return DB::table('units')
+   //    ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
+   //    ->get();
+   // }
 
    
 
