@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class StaffManagement extends Migration
+class SocietyUser extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,14 @@ class StaffManagement extends Migration
      */
     public function up()
     {
-        Schema::create('staff_management', function (Blueprint $table) {
-            $table->increments('staff_id',10);
-            $table->integer('unit_user_id');
+        Schema::create('unit_user', function (Blueprint $table) {
+            $table->increments('unit_user_id',10);
+            $table->integer('user_id');
+            $table->integer('s_id');
+            $table->integer('permission_id');
+            $table->integer('unit_id');
+            $table->dateTime('time_in')->nullable();
+            $table->dateTime('time_out')->nullable();
             $table->tinyInteger('status');
         });
     }

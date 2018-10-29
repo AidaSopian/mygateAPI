@@ -82,5 +82,7 @@ Route::put('create', 'UnitController@create');
 Route::get('units', 'UnitController@index');
 //show by id
 Route::get('units/{id}', 'UnitController@show');
-//Delete unit
-Route::put('delete/{id}', 'UnitController@destroy');
+//join table
+//Route::get('join', 'UnitController@join');
+//show join table
+Route::get('show','UnitController@show');
