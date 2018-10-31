@@ -44,7 +44,16 @@ class PermissionController extends Controller
     public function destroy($id)
     {
 
-        //
+        $permission = Permission::findOrFail($id);
+
+        $permission->status ='3';
+
+        if($permission->save())
+        {
+            return response()->json([
+                'message'=>'Permission has been deleted'
+            ]);
+        }
         
     }
 }

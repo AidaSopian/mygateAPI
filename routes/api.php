@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+ //test controller
+ Route::get('/', 'TestController@test_query');
 
 Route::group([
     'middleware' => 'api',
@@ -40,7 +42,7 @@ Route::group([
     });
 //route for blocks
     //show
-    Route::get('block', 'BlocksController@index');
+    Route::get('block/{id}', 'BlocksController@show');
     //create
     Route::post('block', 'BlocksController@create');
     //update
@@ -66,9 +68,29 @@ Route::group([
       Route::put ('society/{s_id}','SocietyController@destroy');
 
 
+//route for blocks table - yana
+//show
+Route::get('block/{id}', 'BlocksController@show');
+//create
+Route::post('block', 'BlocksController@create');
+//update
+Route::put('block', 'BlocksController@create');
+//delete
+Route::put('/block/{id}', 'BlocksController@destroy');
 
-//Unit_User Table
+//Society Table - kinah
+ //list society
+ Route::get('society/{s_id}', 'SocietyController@show');
+ //create new society
+ Route::post('society', 'SocietyController@store');
+ //update society
+ Route::put('update', 'SocietyController@store');
+ //delete society
+ Route::put('society/{s_id}', 'SocietyController@destroy');
+ //search society
+//Route::post('search', 'SocietyController@getSearchResults'); 
 
+//Unit_User Table - khalilah
 //show detail unit user
 Route::get ('unit_user/{unit_user_id}','UnitUserController@show');      
 //create unit user
@@ -84,7 +106,7 @@ Route::get('check', 'UnitUserController@query');
       
 //create
 Route::post('create', 'UnitController@create');
-//edit or update
+//edit unit
 Route::put('create', 'UnitController@create');
 //show all
 Route::get('units', 'UnitController@index');
@@ -104,3 +126,29 @@ Route::post('done','UnitController@show');
 Route::get('show', 'PermissionController@show');
 //Create table permission
 Route::post('create','PermissionController@create');
+//Delete permission
+Route::put('delete', 'PermissionController@destroy');
+
+//**PROFILE TABLE - ila*/
+
+Route::get('profile/{id}', 'ProfileController@show');
+ //create new society
+ Route::post('profile', 'ProfileController@store');
+ //update society
+ Route::put('store', 'ProfileController@store');
+ //delete society
+ Route::put('profile/{id}', 'ProfileController@destroy');
+ //show data users and profile table
+Route::get('show', 'ProfileController@query');
+
+ //**Parking lot TABLE- ila */
+
+Route::get('parking/{p_id}', 'parkingLotController@show');
+//create new society
+Route::post('parking', 'parkingLotController@store');
+//update society
+Route::put('store', 'parkingLotController@store');
+//delete society
+Route::put('parking/{p_id}', 'parkingLotController@destroy');
+ //show data join table
+ Route::get('showParking', 'parkingLotController@query');
