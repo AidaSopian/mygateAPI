@@ -12,7 +12,8 @@ class UnitUser extends Model
     
     public $primaryKey = "unit_user_id";
 
-    protected $fillable = ['unit_user_id', 'user_id', 's_id', 'permission_id', 'unit_id', 'time_in', 'time_out','status'];
+    protected $fillable = ['user_id', 's_id', 'permission_id', 'unit_id', 'time_in', 'time_out','status'];
 
-
+   
+    
 }
