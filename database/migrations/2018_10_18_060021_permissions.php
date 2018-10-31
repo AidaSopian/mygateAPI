@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class Blocks extends Migration
+class Permission extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class Blocks extends Migration
      */
     public function up()
     {
-        Schema::create('blocks', function (Blueprint $table) {
-            $table->increments('block_id',10);
-            $table->string('block_type',100);
-            $table->tinyInteger('status');
+        Schema::create('permissions', function (Blueprint $table) {
+            $table->increments('permission_id',10);
+            $table->integer('staff_id');
+            $table->string('details',255);
+            $table->timestamp('created_at')->nullable();
+            $table->timestamp('updated_at')->nullable();
         });
     }
 

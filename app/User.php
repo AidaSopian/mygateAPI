@@ -13,6 +13,7 @@ class User extends Authenticatable
 {
     use Notifiable, HasApiTokens, SoftDeletes;
 
+    protected $table = 'user';
     protected $dates = ['deleted_at'];
 
     /**
@@ -40,6 +41,8 @@ class User extends Authenticatable
     
     public function getAvatarUrlAttribute()
     {
-        return Storage::url('avatars/'.$this->user_id.'/'.$this->avatar);
+        return Storage::url('avatars/'.$this->id.'/'.$this->avatar);
     }
+
+  
 }

@@ -34,10 +34,10 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'password'    
       ], function() {
-Route::post('create', 'PasswordResetController@create');
-Route::get('find/{token}','PasswordResetController@find');
-Route::post('reset','PasswordResetController@reset');
-});
+    Route::post('create', 'PasswordResetController@create');
+    Route::get('find/{token}','PasswordResetController@find');
+    Route::post('reset','PasswordResetController@reset');
+    });
 //route for blocks
     //show
     Route::get('block', 'BlocksController@index');
@@ -70,14 +70,17 @@ Route::post('reset','PasswordResetController@reset');
 //Unit_User Table
 
 //show detail unit user
-Route::get ('unit_user/{unit_user_id}','Unit_userController@show');      
+Route::get ('unit_user/{unit_user_id}','UnitUserController@show');      
 //create unit user
-Route::post ('unit_user','Unit_userController@store');
+Route::post ('unit_user','UnitUserController@store');
 //update unit user
-Route::put ('store','Unit_userController@store');        
+Route::put ('store','UnitUserController@store');        
 //delete unit user
-Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');    
-
+Route::put ('unit_user/{unit_user_id}','UnitUserController@delete');    
+//search route
+Route::post('search', 'UnitUserController@getSearchResults'); 
+//to User table
+Route::get('check', 'UnitUserController@query');
       
 //create
 Route::post('create', 'UnitController@create');
@@ -86,12 +89,18 @@ Route::put('create', 'UnitController@create');
 //show all
 Route::get('units', 'UnitController@index');
 //show by id
-Route::get('units/{id}', 'UnitController@show');
+//Route::get('units/{id}', 'UnitController@show');
 //delete
 Route::put('delete/{id}','UnitController@destroy');
 //search
-Route::post('search', 'SocietyController@getSearchResults'); //search route
+//Route::post('search', 'SocietyController@getSearchResults'); //search route
 //join table
 //Route::get('join', 'UnitController@join');
 //show join table
-Route::get('show','UnitController@show');
+Route::post('done','UnitController@show');
+
+//Permission Table
+///Show table (join with staff_management)
+Route::get('show', 'PermissionController@show');
+//Create table permission
+Route::post('create','PermissionController@create');
