@@ -18,7 +18,7 @@ class ProfileController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  //
+    {
         $profile = $request ->isMethod('put') ? Profile::findOrFail($request->id) : new Profile;
 
         $profile->user_id = $request->input('user_id');

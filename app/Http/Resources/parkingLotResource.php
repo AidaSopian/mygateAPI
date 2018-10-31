@@ -19,8 +19,7 @@ class parkingLotResource extends JsonResource
             's_id'=>$this->s_id,
             'user_id'=>$this->user_id,
             'unit_id'=>$this->unit_id,
-            'parking_slot'=>$this->parking_slot,
-            'status'=>$this->status,
+            'parking_slot'=>$this->parking_slot
         ];
     }
 }

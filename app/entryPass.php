@@ -11,7 +11,6 @@ class entryPass extends Model
 
     public $primaryKey = "entryPass_id";
 
-    protected $fillable = [
-        'entryPass_id', 'unit_user_id', 'unit_id', 'status'
-    ];
+    protected $fillable =[ 'entryPass_id', 'unit_user_id', 'unit_id','status'];
+
 }

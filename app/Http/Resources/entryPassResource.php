@@ -14,11 +14,13 @@ class entryPassResource extends JsonResource
      */
     public function toArray($request)
     {
+    //this is comment
         return [
-            'entryPass_id'=>$this->entryPass_id,
-            'unit_user_id'=>$this->unit_user_id,
-            'unit_id'=>$this->unit_id,
-            'status'=>$this->status
+            'entryPass_id' => $this->entryPass_id,
+            'unit_user_id' => $this->unit_user_id,
+            'unit_id' => $this->unit_id,
+            'status' => $this->status
         ];
     }
 }
+

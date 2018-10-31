@@ -17,7 +17,7 @@ class parkingLotController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {  //
+    {
         $parkingLot = $request ->isMethod('put') ? parkingLot::findOrFail($request->p_id) : new parkingLot;
 
         $parkingLot->s_id = $request->input('s_id');

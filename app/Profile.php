@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Profile extends Model
 {
     public $table = "profile";
-    
     public $timestamps = false;
 
     public $primaryKey = "id";

@@ -12,5 +12,5 @@ class parkingLot extends Model
     public $primaryKey = "p_id";
 
     protected $fillable =
-    ['s_id', 'user_id', 'unit_id', 'parking_slot','status'];
+    ['s_id', 'user_id', 'unit_id', 'parking_slot'];
 }

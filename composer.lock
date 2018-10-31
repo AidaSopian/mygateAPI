@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f707c63ed97e6981f0adc7674f689b2e",
+    "content-hash": "2806ac8a7dda643758e19c74167ef951",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -3473,23 +3473,7 @@
         },
         {
             "name": "filp/whoops",
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "version": "2.3.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/filp/whoops.git",
-                "reference": "a9f129b99df316f847584d482c89c14a9f796e2b"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/filp/whoops/zipball/a9f129b99df316f847584d482c89c14a9f796e2b",
-                "reference": "a9f129b99df316f847584d482c89c14a9f796e2b",
-=======
-            "version": "2.3.1",
-=======
             "version": "2.2.1",
->>>>>>> 61b64d382012e07bb0eb231f9fa9d387a5c4b6ac
             "source": {
                 "type": "git",
                 "url": "https://github.com/filp/whoops.git",
@@ -3497,14 +3481,8 @@
             },
             "dist": {
                 "type": "zip",
-<<<<<<< HEAD
-                "url": "https://api.github.com/repos/filp/whoops/zipball/bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
-                "reference": "bc0fd11bc455cc20ee4b5edabc63ebbf859324c7",
->>>>>>> 9715cc5886ce0c995e4f1001efb7f08ac4f38002
-=======
                 "url": "https://api.github.com/repos/filp/whoops/zipball/e79cd403fb77fc8963a99ecc30e80ddd885b3311",
                 "reference": "e79cd403fb77fc8963a99ecc30e80ddd885b3311",
->>>>>>> 61b64d382012e07bb0eb231f9fa9d387a5c4b6ac
                 "shasum": ""
             },
             "require": {
@@ -3552,15 +3530,7 @@
                 "throwable",
                 "whoops"
             ],
-<<<<<<< HEAD
-<<<<<<< HEAD
-            "time": "2018-10-20T09:00:00+00:00"
-=======
-            "time": "2018-10-23T09:00:00+00:00"
->>>>>>> 9715cc5886ce0c995e4f1001efb7f08ac4f38002
-=======
             "time": "2018-06-30T13:14:06+00:00"
->>>>>>> 61b64d382012e07bb0eb231f9fa9d387a5c4b6ac
         },
         {
             "name": "fzaninotto/faker",

@@ -7,9 +7,9 @@ use App\Society;
 use App\Http\Resources\Society as SocietyResource;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use Illuminate\Support\Facades\DB;
-use Auth;
+use App\Drivers;
 use Response;
+use DB;
 
 class SocietyController extends Controller
 {
@@ -36,7 +36,7 @@ class SocietyController extends Controller
         }
     }
 
-    public function destroy($s_id)
+    public function delete($s_id)
     {
         $society = Society::findOrFail($s_id);
 
@@ -56,29 +56,11 @@ class SocietyController extends Controller
 
         $data = $request->get('name');
         $drivers = DB::table('society')->where('name', 'like', "%{$data}%")
-                     ->get();
-
-         /*if($drivers != "")
-           {
-                  $drivers = DB::table('society')->where('name', 'like', "%{$data}%")
                         ->get();
-
-           } else 
-
-                return "No Data Found";
-
-           }*/
         
-        /*if($drivers->save())
-           {
-                 return Response::json([
-                'message'=>'No Data Found' ]);
-
-           } else */
-
-                return Response::json([
-                    $drivers  ]);
-
-           }
+        return Response::json([
+            $drivers
+]);
+    }
 
 }

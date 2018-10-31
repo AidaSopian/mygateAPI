@@ -12,7 +12,7 @@ class Drivers extends Model
   //
    protected $table = 'society';
    protected $fillable = [
-                           's_id',
+                           'name',
                           ];
 
    

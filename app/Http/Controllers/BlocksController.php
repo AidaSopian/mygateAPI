@@ -29,8 +29,10 @@ class BlocksController extends Controller
     {
         $block= $request->isMethod('put') ? Blocks::findOrFail($request->block_id): new Blocks; 
 
+        // $block= new Blocks;
+        //$block->block_id= $request->input('block_id');
         $block->block_type= $request->input('block_type');
-        $block->status = $request->input('status');
+        $block->status= $request->input('status');
 
         if($block->save()){
              return new BlockResource($block); 
@@ -58,7 +60,7 @@ class BlocksController extends Controller
      */
     public function show($id)
     {
-        return $block;
+        return Blocks::find($id);
     }
 
   

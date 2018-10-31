@@ -19,6 +19,7 @@ class ParkingLot extends Migration
             $table->integer('user_id');
             $table->string('unit_id',10);
             $table->string('parking_slot',20);
+            $table->tinyInteger('status');
         });
     }
 

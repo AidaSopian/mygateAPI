@@ -11,8 +11,7 @@
         "laravel/framework": "5.7.*",
         "laravel/passport": "^7.0",
         "laravel/tinker": "^1.0",
-        "laravolt/avatar": "^2.0",
-        "nesbot/carbon": "^1.32"
+        "laravolt/avatar": "^2.0"
     },
     "require-dev": {
         "beyondcode/laravel-dump-server": "^1.0",

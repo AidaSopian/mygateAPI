@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Unit;
 use App\Http\Resources\Unit as UnitResource;
 use Session;
@@ -15,36 +14,43 @@ class UnitController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */
+     *///
     public function index()
     {
-        // Get Unit
-        $units = Unit::paginate(15);
-        return UnitResource::collection($units);
+        //$unit = Unit::paginate(5);
+        $unit = Unit::all();
+
+        $units = $unit->filter(function ($value, $key) {
+            return $value->status < 3;
+        });
+
+        return new UnitResource($units);
+        
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new resource.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) // update and create
+    public function create(Request $request)
     {
-        $units = $request -> isMethod('put') ? Unit::findOrFail ($request -> unit_id) : new Unit;
+        //update or edit
+        $unit = $request->isMethod('put') ? Unit::findOrFail($request->unit_id) : new Unit;
 
-        //$units -> unit_id = $request -> input ('unit_id');
-        $units -> block_id = $request -> input ('block_id');
-        $units -> unit_no = $request -> input ('unit_no');
-        $units -> status = $request -> input ('status');
-        $units -> floor_no= $request -> input ('floor_no');
+       // $unit->id = $request->input('unit_id');
+        $unit->block_id = $request->input('block_id');
+        $unit->unit_no = $request->input('unit_no');
+        $unit->status = $request->input('status');
+        $unit->floor_no = $request->input('floor_no');
+        
+        if($unit->save()) {
 
-        if ($units->save()) {
-
-            return new UnitResource($units);
-
+            return new UnitResource($unit);
         }
     }
+    
+    
 
     /**
      * Display the specified resource.
@@ -52,20 +58,16 @@ class UnitController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request)
+    public function show()
     {
-        $units = $request->get('block_id');
+
         //show unit and blocks table 
-       
         return DB::table('units')
         ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
-        ->where('units.block_id', $units)
         ->get();
-        
-    }
-        
-//when data is deleted, this will show up 
-        /*$unit = Unit::findOrFail($id);
+
+        //when data is deleted, this will show up 
+        $unit = Unit::findOrFail($id);
 
         if ($unit->status == 3){
            return response()->json([
@@ -73,7 +75,16 @@ class UnitController extends Controller
         }
         else{
             return new UnitResource($unit);
-        }  */
+        }  
+    }
+    
+    //join table units and blocks 
+   // public function join()
+   //{
+    //    return DB::table('units')
+   //    ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
+   //    ->get();
+   // }
 
    
 
@@ -85,19 +96,16 @@ class UnitController extends Controller
      */
     public function destroy($id)
     {
-        $units = Unit::findOrFail($id);
 
-        $units->status ='3';
+        $unit = Unit::findOrFail($id);
 
-        if($units->save())
-        {
+        $unit->status = '3';
+
+        if ($unit->save()){
             return response()->json([
-                'message'=>'Unit has been deleted'
-            ]);
-        }
+                 'message' => 'Unit has been deleted']);
+         }    
+         
         
     }
-
 }
-
-
