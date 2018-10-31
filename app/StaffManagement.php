@@ -13,4 +13,5 @@ class StaffManagement extends Model
     public $primaryKey = "staff_id";
 
     protected $fillable = ['unit_user_id','name', 'email','password','status'];
+    //
 }
