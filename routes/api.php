@@ -34,10 +34,10 @@ Route::group([
     'middleware' => 'api',
     'prefix' => 'password'    
       ], function() {
-Route::post('create', 'PasswordResetController@create');
-Route::get('find/{token}','PasswordResetController@find');
-Route::post('reset','PasswordResetController@reset');
-});
+    Route::post('create', 'PasswordResetController@create');
+    Route::get('find/{token}','PasswordResetController@find');
+    Route::post('reset','PasswordResetController@reset');
+    });
 
 //route for blocks
         //show
@@ -53,69 +53,64 @@ Route::post('reset','PasswordResetController@reset');
 
 //Society Table
 
-      //show detail society
-      Route::get ('society/{s_id}','SocietyController@show');
+        //show detail society
+        Route::get ('society/{s_id}','SocietyController@show');
+        //create society
+        Route::post ('society','SocietyController@store');
+        //update society
+        Route::put ('update','SocietyController@store');  
+        //delete society
+        Route::put ('delete/{s_id}','SocietyController@destroy');
+
+//Staff Management Table
+
+        //show detail Staff Management
+        Route::get ('staff_show/{staff_id}','StaffManagementController@show');
+        //create Staff Management
+        Route::post ('staff','StaffManagementController@store');
+        //update Staff Management
+        Route::put ('staff_update','StaffManagementController@store');  
+        //delete Staff Management
+        Route::put ('staff_delete/{staff_id}','StaffManagementController@destroy');
+
+//Society 
+        //search route 
+        Route::post('search', 'SocietyController@getSearchResults'); 
+
+
+// Unit User Table
+    
+
+        //show detail unit user
+        Route::get ('unit_user/{unit_user_id}','UnitUserController@show');      
+        //create unit user
+        Route::post ('unit_user','UnitUserController@store');
+        //update unit user
+        Route::put ('update','UnitUserController@store');        
+        //delete unit user
+        Route::put ('UnitUserDelete/{unit_user_id}','UnitUserController@delete');  
+
+// Unit User 
+
+        //search route
+        Route::post('searchresult', 'UnitUserController@getSearchResults'); 
+        //to User table
+        Route::get('check', 'UnitUserController@query');
       
-      //create society
-      Route::post ('society','SocietyController@store');
-
-      //update society
-      Route::put ('store','SocietyController@store');  
-      
-
-      //delete society
-      Route::delete ('society/{s_id}','SocietyController@delete');
-
 
 // Unit Table 
 
         // List units
         Route::get('units','UnitController@index');
-
         // List single unit
-        Route::get('unit/{id}','UnitController@show');
-
+        Route::post('units','UnitController@show');
         // Create new unit
         Route::post('unit','UnitController@store');
-
         // Update unit
         Route::put('store','UnitController@store');
-
         // Delete unit
-        Route::put('unit/{id}','UnitController@destroy');
+        Route::put('unit_delete/{id}','UnitController@destroy');
 
-// Unit User Table
-    
-        //show detail unit user
-        Route::get ('unit_user/{unit_user_id}','Unit_userController@show');      
-        //create unit user
-        Route::post ('unit_user','Unit_userController@store');
-        //update unit user
-        Route::put ('store','Unit_userController@store');        
-        //delete unit user
-        Route::put ('unit_user/{unit_user_id}','Unit_userController@delete');
+// Test 
 
-
-// Search
-
-       //Route::post('search','SocietyController@getSearchResults');
-
-      Route::get('join','TestController@test_query');
-      //Route::get('show','UnitController@show');
-      
-//create
-Route::post('create', 'UnitController@create');
-//edit or update
-Route::put('create', 'UnitController@create');
-//show all
-Route::get('units', 'UnitController@index');
-//show by id
-Route::get('units/{id}', 'UnitController@show');
-//delete
-Route::put('delete/{id}','UnitController@destroy');
-//search
-Route::post('search', 'SocietyController@getSearchResults'); //search route
-//join table
-//Route::get('join', 'UnitController@join');
-//show join table
-Route::get('show','UnitController@show');
+        Route::get('join','TestController@test_query');
