@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model
 {
+    public $table = "permission";
     public $timestamps = false;
     
     public $primaryKey = "permission_id";

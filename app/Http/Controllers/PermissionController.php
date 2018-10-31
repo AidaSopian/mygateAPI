@@ -33,8 +33,8 @@ class PermissionController extends Controller
         $permission = $request->get('staff_id');
         //show unit and blocks table 
        
-        return DB::table('permissions')
-        ->join('staff_management', 'permissions.staff_id', '=', 'staff_management.staff_id')
+        return DB::table('permission')
+        ->join('staff_management', 'permission.staff_id', '=', 'staff_management.staff_id')
       //  ->where('permissions.staff_id', $permission)
         ->get();
    

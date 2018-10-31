@@ -23,7 +23,8 @@ class ProfileResource extends JsonResource
             'zip'=>$this->zip,
             'city'=>$this->city,
             'state'=>$this->state,
-            'country'=>$this->country
+            'country'=>$this->country,
+            'status'=>$this->status
 
 
 
