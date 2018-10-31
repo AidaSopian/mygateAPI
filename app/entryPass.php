@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class entryPass extends Model
 {
-    //declare table entry
     public $table = "entry";
 
     public $timestamps = false;

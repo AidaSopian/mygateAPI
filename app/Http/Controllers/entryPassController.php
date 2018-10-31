@@ -10,6 +10,7 @@ use DB;
 
 class entryPassController extends Controller
 {
+    //this is comment
    public function store(Request $request)
     {
         $entryPass = $request->isMethod('put') ? entryPass::findOrFail($request->entryPass_id):new entryPass;

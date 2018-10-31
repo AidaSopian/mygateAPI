@@ -93,7 +93,16 @@ Route::put('delete/{id}','UnitController@destroy');
 //join table
 //Route::get('join', 'UnitController@join');
 //show join table
-Route::post('done','UnitController@show');
+//Route::post('done','UnitController@show');
+
+//Permission Table - yana
+
+      ///Show table (join with staff_management)
+         Route::get('show', 'PermissionController@show');
+      //Create table permission
+         Route::post('create','PermissionController@create');
+      //Delete permission
+         Route::put('delete', 'PermissionController@destroy');
 
 
 //**PROFILE TABLE - ila*/
@@ -130,3 +139,16 @@ Route::put('store','entryPassController@store');
 Route::put('entryPass/{entryPass_id}', 'entryPassController@destroy');
 //show data join table
 Route::get('findEntry', 'entryPassController@find');
+
+//Staff Management Table Nik 
+
+        //show detail Staff Management
+        Route::get ('staff_show/{staff_id}','StaffManagementController@show');
+        //create Staff Management
+        Route::post ('staff','StaffManagementController@store');
+        //update Staff Management
+        Route::put ('staff_update','StaffManagementController@store');  
+        //delete Staff Management
+        Route::put ('staff_delete/{staff_id}','StaffManagementController@destroy');
+        //show data join table
+        Route::get ('staff_join', 'StaffManagementController@query');
