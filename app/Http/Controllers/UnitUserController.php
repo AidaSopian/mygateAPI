@@ -91,7 +91,7 @@ class UnitUserController extends Controller
 
     public function query()
     {
-        $unit_user = DB::table('unit_user')
+        $unit_user = DB::table('unit_user', 'units')
             ->join(
                 'users',
                 'users.user_id','=','unit_user.user_id'
@@ -103,6 +103,10 @@ class UnitUserController extends Controller
             ->join(
                 'units',
                 'units.unit_id', '=', 'unit_user.unit_id'
+            )
+            ->join(
+                'blocks',
+                'blocks.block_id', '=', 'units.block_id'
             )
             ->get();
             

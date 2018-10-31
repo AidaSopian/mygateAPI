@@ -13,9 +13,5 @@ class society extends Model
     public $primaryKey = "s_id";
     protected $fillable = ['s_id','name','ic_no', 'no_phone', 'address', 'plate_no', 'type_vehicles','status'];
 
-
-    protected $searchable = [
-        'name'
-    ];
 }
 

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
+
 class Units extends Migration
 {
     /**
@@ -20,6 +21,7 @@ class Units extends Migration
             $table->tinyInteger('status');
             $table->string('floor_no',10);
         });
+
     }
 
     /**
