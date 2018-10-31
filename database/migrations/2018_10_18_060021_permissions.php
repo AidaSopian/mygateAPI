@@ -13,7 +13,7 @@ class Permission extends Migration
      */
     public function up()
     {
-        Schema::create('permission', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->increments('permission_id',10);
             $table->integer('staff_id');
             $table->string('details',255);

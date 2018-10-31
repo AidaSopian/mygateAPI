@@ -121,6 +121,13 @@ Route::put('delete/{id}','UnitController@destroy');
 //show join table
 Route::post('done','UnitController@show');
 
+//Permission Table
+///Show table (join with staff_management)
+Route::get('show', 'PermissionController@show');
+//Create table permission
+Route::post('create','PermissionController@create');
+//Delete permission
+Route::put('delete', 'PermissionController@destroy');
 
 //**PROFILE TABLE - ila*/
 
