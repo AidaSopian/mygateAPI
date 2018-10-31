@@ -74,7 +74,7 @@ Route::group([
         //create Staff Management
         Route::post ('staff','StaffManagementController@store');
         //update Staff Management
-        Route::put ('staff_update','StaffManagementController@store');  
+        Route::put ('s_update','StaffManagementController@store');  
         //delete Staff Management
         Route::put ('staff_delete/{staff_id}','StaffManagementController@destroy');
         //show data join table
@@ -118,9 +118,6 @@ Route::group([
 
 
 
-
-
-
 //join table
 //Route::get('join', 'UnitController@join');
 //show join table
@@ -143,7 +140,7 @@ Route::put('deletePermission/{id}', 'PermissionController@destroy');
         //create new society
         Route::post('profile', 'ProfileController@store');
         //update society
-        Route::put('store', 'ProfileController@store');
+        Route::put('storeProfile', 'ProfileController@store');
         //delete society
         Route::put('profile/{id}', 'ProfileController@destroy');
         //show data users and profile table
@@ -157,7 +154,7 @@ Route::put('deletePermission/{id}', 'PermissionController@destroy');
         Route::post('parking', 'parkingLotController@store');
 
         //update society
-        Route::put('store', 'parkingLotController@store');
+        Route::put('storeParking', 'parkingLotController@store');
 
         //delete society
         Route::put('parking/{p_id}', 'parkingLotController@destroy');
