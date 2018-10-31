@@ -25,9 +25,13 @@ class ProfileResource extends JsonResource
             'state'=>$this->state,
             'country'=>$this->country,
             'status'=>$this->status
+<<<<<<< HEAD
 
 
 
+=======
+            //
+>>>>>>> 3f827da712ca022103068000d97799ee0ae39697
         ];
     }
 }

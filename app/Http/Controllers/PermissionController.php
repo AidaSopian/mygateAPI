@@ -13,7 +13,11 @@ class PermissionController extends Controller
 
     public function create(Request $request)
     {
+<<<<<<< HEAD
         //update or edit
+=======
+        ///update or edit
+>>>>>>> 3f827da712ca022103068000d97799ee0ae39697
         $permission = $request->isMethod('put') ? Permission::findOrFail($request->permission_id) : new Permission;
 
         $permission->staff_id = $request->input('staff_id');
@@ -33,8 +37,13 @@ class PermissionController extends Controller
         $permission = $request->get('staff_id');
         //show unit and blocks table 
        
+<<<<<<< HEAD
         return DB::table('permission')
         ->join('staff_management', 'permission.staff_id', '=', 'staff_management.staff_id')
+=======
+        return DB::table('permissions')
+        ->join('staff_management', 'permissions.staff_id', '=', 'staff_management.staff_id')
+>>>>>>> 3f827da712ca022103068000d97799ee0ae39697
       //  ->where('permissions.staff_id', $permission)
         ->get();
    
