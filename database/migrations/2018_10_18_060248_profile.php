@@ -23,6 +23,7 @@ class Profile extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('country');
+            $table->tinyInteger('status');
         });
     }
 

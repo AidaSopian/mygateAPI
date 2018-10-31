@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Unit_iser;
+use App\Unit_user;
 use App\Http\Resources\Unit_user as Unit_userResources;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -13,7 +13,7 @@ class Unit_userController extends Controller
     //show
     public function show ($unit_user_id)
     {
-        return UnitUser::find ($unit_user_id);
+        return Unit_user::find ($unit_user_id);
     }
 
     //create and update

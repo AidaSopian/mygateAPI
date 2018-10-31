@@ -41,16 +41,6 @@ Route::group([
     Route::post('reset','PasswordResetController@reset');
     });
 
-//route for blocks
-    //show
-    Route::get('block', 'BlocksController@index');
-    //create
-    Route::post('block', 'BlocksController@create');
-    //update
-    Route::put('block', 'BlocksController@create');
-    //delete
-    Route::put('/block/{id}', 'BlocksController@destroy');
-
 //route for blocks table - yana
     //show
     Route::get('block', 'BlocksController@index');
@@ -74,33 +64,69 @@ Route::group([
     Route::post('search', 'SocietyController@getSearchResults'); 
 
 //Unit_User Table - khalilah
-    //show detail unit user
-    Route::get ('unit_user/{unit_user_id}','UnitUserController@show');      
-    //create unit user
-    Route::post ('unit_user','UnitUserController@store');
-    //update unit user
-    Route::put ('store','UnitUserController@store');        
-    //delete unit user
-    Route::put ('unit_user/{unit_user_id}','UnitUserController@delete');    
-    //search route
-    Route::post('search', 'UnitUserController@getSearchResults'); 
-    //to User table
-    Route::get('check', 'UnitUserController@query');
-     
+//show detail unit user
+Route::get ('unit_user/{unit_user_id}','UnitUserController@show');      
+//create unit user
+Route::post ('unit_user','UnitUserController@store');
+//update unit user
+Route::put ('store','UnitUserController@store');        
+//delete unit user
+Route::put ('unit_user/{unit_user_id}','UnitUserController@delete');    
+//search route
+Route::post('search', 'UnitUserController@getSearchResults'); 
+//to User table
+Route::get('check', 'UnitUserController@query');
+      
 //Unit Table - Zula
-    //create
-    Route::post('create', 'UnitController@create');
-    //edit unit
-    Route::put('create', 'UnitController@create');
-    //show all
-    Route::get('units', 'UnitController@index');
-    //show by id
-    //Route::get('units/{id}', 'UnitController@show');
-    //delete
-    Route::put('delete/{id}','UnitController@destroy');
-    //search
-    //Route::post('search', 'SocietyController@getSearchResults'); //search route
-    //join table
-    //Route::get('join', 'UnitController@join');
-    //show join table
-    Route::post('done','UnitController@show');
+//create
+Route::post('create', 'UnitController@create');
+//edit unit
+Route::put('create', 'UnitController@create');
+//show all
+Route::get('units', 'UnitController@index');
+//show by id
+//Route::get('units/{id}', 'UnitController@show');
+//delete
+Route::put('delete/{id}','UnitController@destroy');
+//search
+//Route::post('search', 'SocietyController@getSearchResults'); //search route
+//join table
+//Route::get('join', 'UnitController@join');
+//show join table
+Route::post('done','UnitController@show');
+
+
+//**PROFILE TABLE - ila*/
+Route::get('profile/{id}', 'ProfileController@show');
+ //create new society
+ Route::post('profile', 'ProfileController@store');
+ //update society
+ Route::put('store', 'ProfileController@store');
+ //delete society
+ Route::put('profile/{id}', 'ProfileController@destroy');
+ //show data users and profile table
+Route::get('show', 'ProfileController@query');
+
+
+ //**Parking lot TABLE- ila */
+Route::get('parking/{p_id}', 'parkingLotController@show');
+//create new parking
+Route::post('parking', 'parkingLotController@store');
+//update parking
+Route::put('store', 'parkingLotController@store');
+//delete parking
+Route::put('parking/{p_id}', 'parkingLotController@destroy');
+ //show data join table
+ Route::get('showParking', 'parkingLotController@query');
+
+//entry pass table - kinah
+//show entry data
+Route::get('entryPass/{entryPass_id}','entryPassController@show');
+//create new entry pass
+Route::post('entryPass', 'entryPassController@store');
+//update entry pass
+Route::put('store','entryPassController@store');
+//delete entry pass
+Route::put('entryPass/{entryPass_id}', 'entryPassController@destroy');
+//show data join table
+Route::get('findEntry', 'entryPassController@find');

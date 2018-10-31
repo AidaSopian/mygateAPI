@@ -60,7 +60,7 @@ class BlocksController extends Controller
      */
     public function show($id)
     {
-        return $block;
+        return Blocks::find($id);
     }
 
   
