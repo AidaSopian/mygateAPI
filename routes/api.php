@@ -38,37 +38,31 @@ Route::group([
     Route::get('find/{token}','PasswordResetController@find');
     Route::post('reset','PasswordResetController@reset');
     });
-//route for blocks
-    //show
-    Route::get('block', 'BlocksController@index');
-    //create
-    Route::post('block', 'BlocksController@create');
-    //update
-    Route::put('block', 'BlocksController@create');
-    //delete
-    Route::put('/block/{id}', 'BlocksController@destroy');
 
 
-
-      //Society Table
-
-      //show detail society
-      Route::get ('society/{s_id}','SocietyController@show');
-      
-      //create society
-      Route::post ('society','SocietyController@store');
-
-      //update society
-      Route::put ('society','SocietyController@store');  
-      
-
-      //delete society
-      Route::put ('society/{s_id}','SocietyController@destroy');
+/*BLOCKS CONTROLLER*/
+//show
+Route::get('block', 'BlocksController@index');
+//create
+Route::post('block', 'BlocksController@create');
+//update
+Route::put('block', 'BlocksController@create');
+//delete
+Route::put('/block/{id}', 'BlocksController@destroy');
 
 
+/*Society Tabl*/
+//show detail society
+Route::get ('society/{s_id}','SocietyController@show');
+//create societ  
+Route::post ('society','SocietyController@store');
+//update society
+Route::put ('society','SocietyController@store');  
+//delete society
+Route::put ('society/{s_id}','SocietyController@destroy');
 
-//Unit_User Table
 
+/*UNIT_USER TABLE*/
 //show detail unit user
 Route::get ('unit_user/{unit_user_id}','UnitUserController@show');      
 //create unit user
@@ -82,6 +76,8 @@ Route::post('search', 'UnitUserController@getSearchResults');
 //to User table
 Route::get('check', 'UnitUserController@query');
       
+
+/*UNIT CONTROLLER*/ 
 //create
 Route::post('create', 'UnitController@create');
 //edit or update
@@ -92,9 +88,55 @@ Route::get('units', 'UnitController@index');
 //Route::get('units/{id}', 'UnitController@show');
 //delete
 Route::put('delete/{id}','UnitController@destroy');
-//search
-//Route::post('search', 'SocietyController@getSearchResults'); //search route
-//join table
-//Route::get('join', 'UnitController@join');
 //show join table
 Route::post('done','UnitController@show');
+//join table
+//Route::get('join', 'UnitController@join');
+
+
+/*ENTRY CONTROLLER*/ 
+//create
+Route::post('createEntry', 'EntryController@create');
+//edit and update
+Route::put('updateEntry', 'EntryController@create');
+//search id
+Route::post('searchEntry', 'EntryController@show');
+//delete by update status
+Route::put('remove/{entryPass_id}', 'EntryController@destroy');
+
+
+/*PARKING CONTROLLER*/ 
+//create
+Route::post('createParking', 'ParkingController@create');
+//edit and update
+Route::put('updateParking', 'ParkingController@create');
+//search id
+Route::post('searchParking', 'ParkingController@show');
+
+
+/*PARKING CONTROLLER*/ 
+//create
+Route::post('createStaff', 'StaffController@create');
+//edit and update
+Route::put('updateStaff', 'StaffController@create');
+//search id
+Route::post('searchStaff', 'StaffController@show');
+
+
+
+/*PERMISSION CONTROLLER*/ 
+//create
+Route::post('createPermission', 'PermissionController@create');
+//edit and update
+Route::put('updatePermission', 'PermissionController@create');
+//search id
+Route::post('searchPermission', 'PermissionController@show');
+
+
+/*PROFILE CONTROLLER*/ 
+//create
+Route::post('createProfile', 'ProfileController@create');
+//edit and update
+Route::put('updateProfile', 'ProfileController@create');
+//search id
+Route::post('searchProfile', 'ProfileController@show');
