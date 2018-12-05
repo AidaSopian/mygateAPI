@@ -17,6 +17,35 @@ class UnitUserController extends Controller
     public function show($unit_user_id)
     {
         return UnitUser::find($unit_user_id);
+        $unit_user = DB::table('unit_user', 'units', 'permission')
+            ->join(
+                'users',
+                'users.user_id','=','unit_user.user_id'
+            )
+            ->join(
+                'society',
+                'society.s_id', '=', 'unit_user.s_id'
+            )
+            ->join(
+                'units',
+                'units.unit_id', '=', 'unit_user.unit_id'
+            )
+            ->join(
+                'blocks',
+                'blocks.block_id', '=', 'units.block_id'
+            )
+            ->join(
+                'permission',
+                'permission.permission_id', '=', 'unit_user.permission_id'
+            )
+            ->join(
+                'staff_management',
+                'staff_management.staff_id', '=', 'permission.staff_id'
+            )
+            ->get();
+            
+            print_r($unit_user);
+   
     }
 
     public function store(Request $request)

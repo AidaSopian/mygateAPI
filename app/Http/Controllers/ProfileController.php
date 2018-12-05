@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use DB;
 use App\Profile;
 use App\Http\Resources\Profile as ProfileResource;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\User;
 
 class ProfileController extends Controller
 {
@@ -22,6 +25,9 @@ class ProfileController extends Controller
             $profile->city = $request->input('city');
             $profile->state = $request->input('state');
             $profile->country = $request->input('country');
+
+            
+
 
             if($profile->save()) {
     

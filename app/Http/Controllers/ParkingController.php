@@ -30,13 +30,13 @@ class ParkingController extends Controller
         $parking = $request->get('p_id');
         //show unit and blocks table 
        
-        return DB::table('parking_lot', 'units', 'entry')
+        return DB::table('parking_lot', 'units')
         ->join('society', 'society.s_id', '=', 'parking_lot.s_id')
         ->join('users', 'users.user_id', '=', 'parking_lot.user_id')
         ->join('units', 'units.unit_id', '=', 'parking_lot.unit_id')
         ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
         ->where('parking_lot.p_id', $parking)
-        ->select('parking_lot.*', 'society.*', 'entry', 'units.*', 'blocks.*')
+        ->select('parking_lot.*', 'society.*', 'units.*', 'blocks.*')
         ->get();
         
 

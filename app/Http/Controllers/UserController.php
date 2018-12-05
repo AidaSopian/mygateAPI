@@ -9,6 +9,7 @@ use App\User;
 use Avatar;
 use Storage;
 use App\Notifications\SignupActivate;
+//use App\Http\BlocksController;
 
 class UserController extends Controller
 {
@@ -77,6 +78,7 @@ class UserController extends Controller
             'expires_at' => Carbon::parse(
             )->toDateTimeString()
         ]);
+        
     }
 
     /** LOGOUT USER & REVOKE TOKEN */
