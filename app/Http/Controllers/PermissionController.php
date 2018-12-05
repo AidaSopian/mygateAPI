@@ -20,7 +20,8 @@ class PermissionController extends Controller
         $permission->details = $request->input('details');
         $permission->created_at = $request->input('created_at');
         $permission->updated_at = $request->input('updated_at');
-        
+        $permission->status = $request->input('status');
+
         if($permission->save()) {
 
             return new PermissionResource($permission);
@@ -33,8 +34,8 @@ class PermissionController extends Controller
         $permission = $request->get('staff_id');
         //show unit and blocks table 
        
-        return DB::table('permissions')
-        ->join('staff_management', 'permissions.staff_id', '=', 'staff_management.staff_id')
+        return DB::table('permission')
+        ->join('staff_management', 'permission.staff_id', '=', 'staff_management.staff_id')
       //  ->where('permissions.staff_id', $permission)
         ->get();
    

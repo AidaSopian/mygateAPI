@@ -57,8 +57,7 @@ class UnitUserController extends Controller
         return DB::table('unit_user')
         ->join(
             'society',
-            'society.s_id', '=', 'unit_user.s_id'
-        )
+            'society.s_id', '=', 'unit_user.s_id')
         ->where('unit_user.s_id', $data)
                         ->get();
         }
@@ -66,26 +65,20 @@ class UnitUserController extends Controller
             return DB::table('unit_user')
             ->join(
                 'users',
-                'users.user_id','=','unit_user.user_id'
-            )
+                'users.user_id','=','unit_user.user_id')
             ->where('unit_user.user_id', $data)
-                            ->get();
-            }
+                            ->get();}
             elseif($data = $request->get('unit_id')){
                 return DB::table('units')
                 ->join(
                     'unit_user',
-                    'units.unit_id', '=', 'unit_user.unit_id'
-                )
+                    'units.unit_id', '=', 'unit_user.unit_id')
                 ->join(
                     'blocks',
-                    'blocks.block_id', '=', 'units.block_id'
-                )
+                    'blocks.block_id', '=', 'units.block_id')
                 ->where('units.unit_id', $data)
                 ->select('unit_user.*', 'units.*','blocks.*')
-                ->get();
-                
-                }
+                ->get(); }
 
     }
 
@@ -94,20 +87,13 @@ class UnitUserController extends Controller
         $unit_user = DB::table('unit_user')
             ->join(
                 'users',
-                'users.user_id','=','unit_user.user_id'
-            )
+                'users.user_id','=','unit_user.user_id')
             ->join(
                 'society',
-                'society.s_id', '=', 'unit_user.s_id'
-            )
+                'society.s_id', '=', 'unit_user.s_id')
             ->join(
                 'units',
-                'units.unit_id', '=', 'unit_user.unit_id'
-            )
+                'units.unit_id', '=', 'unit_user.unit_id')
             ->get();
-            
             print_r($unit_user);
-   
-    }
-
-}
+    }   }
