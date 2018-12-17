@@ -16,7 +16,9 @@ class BlocksController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    { 
+        //return response()->json($request->index());
+        //return Auth::all();
         return Blocks::all();
     }
 
@@ -27,17 +29,17 @@ class BlocksController extends Controller
      */
     public function create(request $request)
     {
+        
         $block= $request->isMethod('put') ? Blocks::findOrFail($request->block_id): new Blocks; 
 
-        // $block= new Blocks;
-        //$block->block_id= $request->input('block_id');
         $block->block_type= $request->input('block_type');
-        $block->status= $request->input('status');
+        $block->status = $request->input('status');
 
         if($block->save()){
              return new BlockResource($block); 
         } 
-
+        
+      
     }
 
 
@@ -60,7 +62,7 @@ class BlocksController extends Controller
      */
     public function show($id)
     {
-        return Blocks::find($id);
+        return $block;
     }
 
   

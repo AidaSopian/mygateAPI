@@ -7,18 +7,20 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class passwordResetSuccess extends Notification
+class PasswordResetRequest extends Notification implements ShouldQueue
 {
     use Queueable;
+
+    protected $token;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($token)
     {
-        //
+        $this->token = $token;
     }
 
     /**
@@ -40,11 +42,14 @@ class passwordResetSuccess extends Notification
      */
     public function toMail($notifiable)
     {
+        $url = url('/api/password/find/' .$this->token);
+
         return (new MailMessage)
-            ->line('You are changed your password succeful.')
-            ->line('If you did change password, no further action is required.')
-            ->line('If you did not change password, protect your account.');
+                    ->line('You are receiving this email because we received a password reser request for your account.')
+                    ->action('Reset Password', url($url))
+                    ->line('If you did not request a password reset, no further action is required.');
     }
+
 
     /**
      * Get the array representation of the notification.
@@ -52,6 +57,7 @@ class passwordResetSuccess extends Notification
      * @param  mixed  $notifiable
      * @return array
      */
+    
     public function toArray($notifiable)
     {
         return [

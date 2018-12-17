@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\entryPass;
-use App\Http\Resources\entryPassResource as entryPassResource;
+use App\Http\Resources\Entry as entryPassResource;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use DB;
 
 class entryPassController extends Controller
 {
-    //this is comment
+   
    public function store(Request $request)
     {
         $entryPass = $request->isMethod('put') ? entryPass::

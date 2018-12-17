@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class parkingLotResource extends JsonResource
+class Entry extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,12 +14,6 @@ class parkingLotResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'p_id'=>$this->p_id,
-            's_id'=>$this->s_id,
-            'user_id'=>$this->user_id,
-            'unit_id'=>$this->unit_id,
-            'parking_slot'=>$this->parking_slot
-        ];
+        return parent::toArray($request);
     }
 }

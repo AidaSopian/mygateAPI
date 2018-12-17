@@ -14,10 +14,6 @@ class BlockResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'block_id'=> $this-> block_id,
-            'block_type'=> $this-> block_type,
-            'status'=> $this-> status,
-        ];
+        return parent::toArray($request);
     }
 }

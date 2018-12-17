@@ -10,6 +10,5 @@ class Permission extends Model
     public $timestamps = false;
     
     public $primaryKey = "permission_id";
-
-    protected $fillable = ['staff_id', 'details','created_at', 'updated_at'];
+    protected $fillable = ['staff_id','details', 'created_at', 'updated_at'];
 }

@@ -2,83 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use App\Profile;
-use App\Http\Resources\ProfileResource as ProfileResource;
 use Illuminate\Http\Request;
-use App\Http\Requests;
-use Illuminate\Support\Facades\DB;
+use DB;
+use App\Profile;
+use App\Http\Resources\Profile as ProfileResource;
+use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use App\User;
 
 class ProfileController extends Controller
 {
-   
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $profile = $request ->isMethod('put') ? Profile::findOrFail($request->id) : new Profile;
-
-        $profile->user_id = $request->input('user_id');
-        $profile->name = $request->input('name');
-        $profile->phone = $request->input('phone');
-        $profile->address = $request->input('address');
-        $profile->zip = $request->input('zip');
-        $profile->city = $request->input('city');
-        $profile->state = $request->input('state');
-        $profile->country = $request->input('country');
-        $profile->status = $request->input('status');
-
-        if($profile->save()){
-            return new ProfileResource($profile);
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return Profile:: find ($id);
-    }
-
-    //show user profile
-    public function query (Request $request)
-    {
-        //$profile = $request->get('user_id');
-
-        $profile = DB::table('profile')
-        ->join('users', 'users.user_id', '=', 'profile.user_id')
-        ->get();
-
-        print_r($profile);
-
-
-    }
-
-    
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        $profile = Profile::findOrFail($id);
-
-        $profile->status ='3';
-
-        if($profile->save())
+    public function create(Request $request)
         {
-            return response()->json([
-                'message'=>'Profile has been deleted'
-            ]);
+            //update or edit
+            $profile = $request->isMethod('put') ? Profile::findOrFail($request->id) : new Profile;
+    
+            $profile->user_id = $request->input('user_id');
+            $profile->name = $request->input('name');
+            $profile->phone = $request->input('phone');
+            $profile->address = $request->input('address');
+            $profile->zip = $request->input('zip');
+            $profile->city = $request->input('city');
+            $profile->state = $request->input('state');
+            $profile->country = $request->input('country');
+
+            
+
+
+            if($profile->save()) {
+    
+                return new ProfileResource($profile);
+            }
         }
-    }
+    
+        public function show(Request $request)
+        {
+            $profile = $request->get('id');
+            //show unit and blocks table 
+           
+            return DB::table('profile')
+            ->join('users', 'users.user_id', '=', 'profile.user_id')
+            ->where('profile.id', $profile)
+            ->select('profile.*', 'users.*')
+            ->get();
+            
+    
+            //when data is deleted, this will show up 
+            /*$unit = Unit::findOrFail($id);
+    
+            if ($unit->status == 3){
+               return response()->json([
+                    'message' => 'Unit has been deleted']);
+            }
+            else{
+                return new UnitResource($unit);
+            }  */
+    
+        }
+    
 }

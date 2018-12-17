@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class entryPassResource extends JsonResource
+class Staff extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,13 +14,6 @@ class entryPassResource extends JsonResource
      */
     public function toArray($request)
     {
-    //this is comment
-        return [
-            'entryPass_id' => $this->entryPass_id,
-            'unit_user_id' => $this->unit_user_id,
-            'unit_id' => $this->unit_id,
-            'status' => $this->status
-        ];
+        return parent::toArray($request);
     }
 }
-

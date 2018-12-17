@@ -22,6 +22,8 @@ Route::group([
     Route::post('login', 'UserController@login');
     Route::post('signup', 'UserController@signup');
     Route::get('signup/activate/{token}', 'UserController@signupActivate');   
+    
+    //Route::get('block', 'UserController@index');
   
 Route::group([
       'middleware' => 'auth:api'
@@ -92,7 +94,54 @@ Route::group([
         Route::put('deletePermission/{id}', 'PermissionController@destroy');
         //edit unit
         Route::put('updatePermission', 'PermissionController@create');
-    });
+
+        //**PROFILE TABLE - ila*/
+        Route::get('profile', 'ProfileController@show');
+        //create new society
+        Route::post('createProfile', 'ProfileController@create');
+        //update society
+        Route::put('updateProfile', 'ProfileController@create');
+        //delete society
+        Route::put('deleteProfile/{id}', 'ProfileController@destroy');
+        //show data users and profile table
+       // Route::get('show', 'ProfileController@query');
+
+
+       //**Parking lot TABLE- ila */
+        Route::get('parking/{p_id}', 'ParkingController@show');
+        //create new parking
+        Route::post('createParking', 'ParkingController@create');
+        //update parking
+        Route::put('updatePark', 'ParkingController@create');
+        //delete parking
+        Route::put('deleteParking/{p_id}', 'ParkingController@delete');
+        //show data join table
+        Route::get('showParking', 'ParkingController@query');
+
+        //entry pass table - kinah
+        //show entry data
+        Route::get('entryPass/{entryPass_id}','entryPassController@show');
+        //create new entry pass
+        Route::post('createEntryPass', 'entryPassController@store');
+        //update entry pass
+        Route::put('EntryUpdate','entryPassController@store');
+        //delete entry pass
+        Route::put('deleteEntryPass/{entryPass_id}', 'entryPassController@destroy');
+        //show data join table
+        Route::get('findEntry', 'entryPassController@find');
+
+        //Staff Management Table Nik 
+        //show detail Staff Management
+        Route::get ('staff_show/{staff_id}','StaffController@show');
+        //create Staff Management
+        Route::post ('staff_create','StaffController@create');
+        //update Staff Management
+        Route::put ('staff_update','StaffController@create');  
+        //delete Staff Management
+        Route::put ('staff_delete/{staff_id}','StaffController@destroy');
+        //show data join table
+        Route::get ('find_Staff', 'StaffController@query');
+        });
 });
 
 Route::group([
@@ -110,56 +159,8 @@ Route::group([
 
 
 
-      
+ 
 
 
 
 
-
-//**PROFILE TABLE - ila*/
-Route::get('profile/{id}', 'ProfileController@show');
- //create new society
- Route::post('profile', 'ProfileController@store');
- //update society
- Route::put('storeProfile', 'ProfileController@store');
- //delete society
- Route::put('profile/{id}', 'ProfileController@destroy');
- //show data users and profile table
-Route::get('show', 'ProfileController@query');
-
-
- //**Parking lot TABLE- ila */
-Route::get('parking/{p_id}', 'parkingLotController@show');
-//create new parking
-Route::post('parking', 'parkingLotController@store');
-//update parking
-Route::put('store', 'parkingLotController@store');
-//delete parking
-Route::put('parking/{p_id}', 'parkingLotController@destroy');
- //show data join table
- Route::get('showParking', 'parkingLotController@query');
-
-//entry pass table - kinah
-//show entry data
-Route::get('entryPass/{entryPass_id}','entryPassController@show');
-//create new entry pass
-Route::post('entryPass', 'entryPassController@store');
-//update entry pass
-Route::put('entryStore','entryPassController@store');
-//delete entry pass
-Route::put('entryPass/{entryPass_id}', 'entryPassController@destroy');
-//show data join table
-Route::get('findEntry', 'entryPassController@find');
-
-//Staff Management Table Nik 
-
-        //show detail Staff Management
-        Route::get ('staff_show/{staff_id}','StaffManagementController@show');
-        //create Staff Management
-        Route::post ('staff','StaffManagementController@store');
-        //update Staff Management
-        Route::put ('staff_update','StaffManagementController@store');  
-        //delete Staff Management
-        Route::put ('staff_delete/{staff_id}','StaffManagementController@destroy');
-        //show data join table
-        Route::get ('staff_join', 'StaffManagementController@query');

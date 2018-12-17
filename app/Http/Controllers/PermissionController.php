@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Permission;
 use App\Http\Resources\Permission as PermissionResource;
-use Session;
-use Illuminate\Support\Facades\DB;
 
 class PermissionController extends Controller
 {
@@ -41,20 +40,40 @@ class PermissionController extends Controller
    
     }
     
-
-    public function destroy($id)
-    {
-
-        $permission = Permission::findOrFail($id);
-
-        $permission->status ='3';
-
-        if($permission->save())
-        {
-            return response()->json([
-                'message'=>'Permission has been deleted'
-            ]);
-        }
+            
         
-    }
-}
+    /*
+        public function show(Request $request)
+        {
+            $permission = $request->get('permission_id');
+            //show unit and blocks table 
+           
+            return DB::table('permission','staff_management', 'unit_user', 'units')
+            ->join('staff_management', 'staff_management.staff_id', '=', 'permission.staff_id')
+            ->join('unit_user', 'unit_user.unit_user_id', '=', 'staff_management.unit_user_id')
+            ->join('units', 'units.unit_id', '=', 'unit_user.unit_id')
+            ->join('blocks', 'blocks.block_id', '=', 'units.block_id')
+            ->where('permission.permission_id', $permission)
+            ->select('permission.*', 'staff_management.*', 'unit_user.*', 'units.*', 'blocks.*')
+            ->get();
+        }*/
+            
+    
+        public function destroy($permission)
+        {
+            $permission = Permission::findOrFail($permission);
+    
+            $permission->status = "3";
+    
+            if($permission->save()){
+                return response()->json([
+                    'message' => "Permission has been deleted"
+                ]);
+            }
+        }
+    
+        }
+    
+    
+    
+
