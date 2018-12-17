@@ -39,6 +39,7 @@ class UnitController extends Controller
         $unit = $request->isMethod('put') ? Unit::findOrFail($request->unit_id) : new Unit;
 
        // $unit->id = $request->input('unit_id');
+       $unit->id = $request->input('user_id');
         $unit->block_id = $request->input('block_id');
         $unit->unit_no = $request->input('unit_no');
         $unit->status = $request->input('status');
@@ -52,47 +53,22 @@ class UnitController extends Controller
     
     
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Request $request)
+    //show data in table unit,block and profile by id
+    public function show($unit_id)
     {
-        $unit = $request->get('block_id');
-        //show unit and blocks table 
-       
-        return DB::table('units')
+        
+        return Unit::find($unit_id);
+
+        return DB::table('units','profile')
         ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
-        ->where('units.block_id', $unit)
+        ->join('profile','units.id', '=', 'profile.id')
+        //->where('units.block_id', $unit)
         ->get();
-        
-
-        
-        //when data is deleted, this will show up 
-        /*$unit = Unit::findOrFail($id);
-
-        if ($unit->status == 3){
-           return response()->json([
-                'message' => 'Unit has been deleted']);
-        }
-        else{
-            return new UnitResource($unit);
-        }  */
-
-
-
+        print_r($unit);
+    
     }
     
-    //join table units and blocks 
-   // public function join()
-   //{
-    //    return DB::table('units')
-   //    ->join('blocks', 'units.block_id', '=', 'blocks.block_id')
-   //    ->get();
-   // }
-
+  
    
 
     /**

@@ -9,6 +9,12 @@ use App\Http\Resources\Parking as ParkingResource;
 
 class ParkingController extends Controller
 {
+    public function show($p_id)
+    {
+        return Parking::find($p_id);
+    }
+
+
     public function create(Request $request)
     {
         //update or edit
@@ -18,6 +24,7 @@ class ParkingController extends Controller
         $parking->user_id = $request->input('user_id');
         $parking->unit_id = $request->input('unit_id');
         $parking->parking_slot = $request->input('parking_slot');
+        $parking->status = $request->input('status');
         
         if($parking->save()) {
 
@@ -25,7 +32,7 @@ class ParkingController extends Controller
         }
     }
 
-    public function show(Request $request)
+    public function query(Request $request)
     {
         $parking = $request->get('p_id');
         //show unit and blocks table 
@@ -40,17 +47,19 @@ class ParkingController extends Controller
         ->get();
         
 
-        //when data is deleted, this will show up 
-        /*$unit = Unit::findOrFail($id);
+    }
 
-        if ($unit->status == 3){
-           return response()->json([
-                'message' => 'Unit has been deleted']);
+    public function delete($parking)
+    {
+        $parking = Parking::findOrFail($parking);
+
+        $parking->status = "3";
+
+        if($parking->save()){
+            return response()->json([
+                'message' => "Parking has been deleted"
+            ]);
         }
-        else{
-            return new UnitResource($unit);
-        }  */
-
     }
     
 

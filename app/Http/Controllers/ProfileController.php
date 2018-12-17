@@ -42,22 +42,22 @@ class ProfileController extends Controller
            
             return DB::table('profile')
             ->join('users', 'users.user_id', '=', 'profile.user_id')
-            ->where('profile.id', $profile)
-            ->select('profile.*', 'users.*')
+            //->where('profile.id', $profile)
+           //->select('profile.', 'users.')
             ->get();
             
-    
-            //when data is deleted, this will show up 
-            /*$unit = Unit::findOrFail($id);
-    
-            if ($unit->status == 3){
-               return response()->json([
-                    'message' => 'Unit has been deleted']);
-            }
-            else{
-                return new UnitResource($unit);
-            }  */
-    
         }
+        public function destroy($profile)
+            {
+                $profile =Profile::findOrFail($profile);
+        
+                $profile->status = "3";
+        
+                if($profile->save()){
+                    return response()->json([
+                        'message' => "Profile has been deleted"
+                    ]);
+                }
+            }
     
 }

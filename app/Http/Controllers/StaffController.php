@@ -9,12 +9,20 @@ use App\Http\Resources\Staff as StaffResource;
 
 class StaffController extends Controller
 {
+    public function show($staff_id)
+    {
+        return Staff::find($staff_id);
+    }
+
     public function create(Request $request)
     {
         //update or edit
         $staff = $request->isMethod('put') ? Staff::findOrFail($request->staff_id) : new Staff;
 
         $staff->unit_user_id = $request->input('unit_user_id');
+        $staff->name = $request->input('name');
+        $staff->email = $request->input('email');
+        $staff->password = $request->input('password');
         $staff->status = $request->input('status');
         
         if($staff->save()) {
@@ -23,7 +31,7 @@ class StaffController extends Controller
         }
     }
 
-    public function show(Request $request)
+    public function query(Request $request)
     {
         $staff = $request->get('staff_id');
         //show unit and blocks table 
@@ -37,17 +45,21 @@ class StaffController extends Controller
         ->select('staff_management.*', 'unit_user.*', 'users.*', 'units.*', 'blocks.*')
         ->get();
         
-
-        //when data is deleted, this will show up 
-        /*$unit = Unit::findOrFail($id);
-
-        if ($unit->status == 3){
-           return response()->json([
-                'message' => 'Unit has been deleted']);
-        }
-        else{
-            return new UnitResource($unit);
-        }  */
-
     }
+
+    public function destroy($staff_id)
+    {
+        $staff = Staff::findOrFail($staff_id);   
+
+        $staff->status = '3';
+
+        if($staff->save())
+        {
+            return response()->json([
+                'message' => 'Staff has been deleted'
+            ]);
+        }
+    }
+
+
 }
